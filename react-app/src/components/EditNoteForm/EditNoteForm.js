@@ -16,6 +16,7 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
 
   const useOutsideClick = (ref, cb) => {
     const handleClick = e => {
+      setShowErrors(true)
       if (ref.current && !ref.current.contains(e.target)) {
         cb();
       }
@@ -39,7 +40,7 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setShowErrors(true)
+    setShowErrors(false)
     setShowEdit(false)
 
     if (!validationErrors.length) {
@@ -76,11 +77,11 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
           type='text'
           value={noteBody}
           onChange={(e) => setNoteBody(e.target.value)} />
-            {/* disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField}  */}
+            {/*  onMouseDown={handleSubmit} visible={showSubmitField}  */}
         <div id='note-buttons-container'>
-          <button id='edit-note-save-button'type='submit'>Save</button>
+          <button disable={validationErrors.length > 0} id='edit-note-save-button'type='submit'>Save</button>
           <div>
-            <ul>
+            <ul className='edit-note-form-error'>
               {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
                 <li key={error}>{error}</li>
               ))}

@@ -75,6 +75,7 @@ const NoteForm = ({setShowEdit, recipe }) => {
   //   setShowSubmitField(true)
   // }
   useOutsideClick(ref, () => {
+    setShowErrors(false)
     setShowEdit(false)
   });
 
