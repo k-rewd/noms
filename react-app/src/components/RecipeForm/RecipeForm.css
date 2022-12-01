@@ -86,6 +86,8 @@
   padding:10px;
   font-size: 14px;
   margin-bottom: 2px;
+  overflow-x: scroll;
+
 }
 .recipe-form-preparation {
   white-space: pre-wrap; /* or pre-line */
@@ -97,6 +99,7 @@
   padding:10px;
   font-size: 14px;
   margin-bottom: 2px;
+  overflow-x: scroll;
 }
 .recipe-form-error-space {
   height: 120px;
