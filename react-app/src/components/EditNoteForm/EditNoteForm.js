@@ -1,16 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom'
 import { updateNoteThunk } from '../../store/notes'
+import './EditNoteForm.css'
 
 const EditNoteForm = ({setShowEdit, existingNote}) => {
   const dispatch = useDispatch()
+  const ref = useRef()
 
   const [noteBody, setNoteBody] = useState(existingNote.note_body)
   const [validationErrors, setValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false);
 
   const notes = useSelector((state) => state.notes)
+
+  const useOutsideClick = (ref, cb) => {
+    const handleClick = e => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        cb();
+      }
+    };
+  
+    useEffect(() => {
+      document.addEventListener("click", handleClick);
+  
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    });
+  };
 
   useEffect(() => {
     const errors = []
@@ -39,20 +57,25 @@ const EditNoteForm = ({setShowEdit, existingNote}) => {
       }
     }
   }
-  const handleCancelClick = (e) => {
-    e.preventDefault();
-  };
+  // onClick={handleCancelClick}
+  // const handleCancelClick = (e) => {
+  //   e.preventDefault();
+  //   setShowEdit(false)
+
+  // };
+
+  useOutsideClick(ref, () => {
+    setShowEdit(false)
+  });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} spellCheck="false">
+    <div  >
+      <form onSubmit={handleSubmit} spellCheck="false" ref={ref}>
         <textarea
           type='text'
           value={noteBody}
           onChange={(e) => setNoteBody(e.target.value)} />
-        <div>
-          <button type='submit'>Save</button>
-        </div>
+        <div id='note-buttons-container'>
         <div>
           <div>
             {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
@@ -60,6 +83,10 @@ const EditNoteForm = ({setShowEdit, existingNote}) => {
             ))}
           </div>
         </div>
+          <button type='submit'>Save</button>
+          <button type='button'>Cancel</button>
+        </div>
+
       </form>
     </div>
   )
