@@ -54,7 +54,6 @@ const Recipe = () => {
   
 
   useEffect(() => {
-    
     dispatch(getOneRecipeThunk(recipeId))
   }, [dispatch, recipeId])
 

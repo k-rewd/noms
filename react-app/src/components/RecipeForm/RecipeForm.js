@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useParams, useHistory } from 'react-router-dom'
 import { createRecipeThunk } from '../../store/recipes'
+import './RecipeForm.css'
 
 const RecipeForm = ({ setShowModal }) => {
   const dispatch = useDispatch()
@@ -57,39 +58,45 @@ const RecipeForm = ({ setShowModal }) => {
     }
   }
   return (
-    <div>
+    <div className='recipe-form-modal'>
       <div>
-        <form onSubmit={handleSubmit}>
-          <h2>Share your Recipe</h2>
-          <div>
+        <form className='recipe-form' onSubmit={handleSubmit}>
+          <div className='form-title-container'><h2 className='form-title'>Share your Recipe</h2></div>
+          <div className='recipe-form-content'>
             <input
+              className='recipe-form-title'
               type='text'
               placeholder='Title'
               value={title}
               onChange={newTitle} />
+            <input
+              className='recipe-form-image'
+              type='url'
+              placeholder='Image(URL)'
+              value={recipeImage}
+              onChange={newRecipeImage} />
             <textarea
+              className='recipe-form-ingredients'
               type='text'
               placeholder='Ingredients'
               value={ingredients}
               onChange={newIngredients} />
             <textarea
+              className='recipe-form-preparation'
               type='text'
               placeholder='Preparation'
               value={preparation}
               onChange={newPreparation} />
-            <input
-              type='url'
-              placeholder='Image(URL)'
-              value={recipeImage}
-              onChange={newRecipeImage} />
-            <button type='submit'>Submit Your Recipe</button>
+              <div ></div>
+            <div className='recipe-form-error-space'>
+              <ul >
+                {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
+                  <li key={error}>{error}</li>))}
+              </ul>
+            </div>
+            <button className='submit-recipe-button-form' type='submit'>Submit Your Recipe</button>
           </div>
-          <div>
-            <ul >
-              {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
-                <li key={error}>{error}</li>))}
-            </ul>
-          </div>
+
         </form>
       </div>
     </div>
