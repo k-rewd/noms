@@ -56,7 +56,7 @@ const Recipe = () => {
           <div id='rp-header'>
             <div id='rp-header-left'>
               <div id='user-buttons-container'>
-                {sessionUser.id === recipe.user_id ? 
+                {sessionUser && sessionUser.id === recipe.user_id ? 
                   <div >
                     <EditRecipeModal/>
                     <img id='trashpng' src={trashPNG} onClick={() => {dispatch(deleteRecipeThunk(recipe.id))}}/>

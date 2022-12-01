@@ -8,6 +8,7 @@ import LogoutButton from '../auth/LogoutButton';
 import SignUpForm from '../auth/SignUpForm';
 import RecipeFormModal from '../RecipeForm/RecipeFormModal';
 import './NavBar.css'
+import N from '../buttons/chomskyN.png'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
