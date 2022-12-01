@@ -13,10 +13,6 @@ import N from '../buttons/chomskyN.png'
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
 
-
-
-
-
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -38,8 +34,8 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div className='right-buttons'>
-          <div> GITHUB</div>
-          <div> LINKEDIN </div>
+          {/* <div> GITHUB</div>
+          <div> LINKEDIN </div> */}
         {!sessionUser && (
           <>
             <div><LoginForm /></div>

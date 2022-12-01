@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { deleteRecipeThunk, getOneRecipeThunk } from "../../store/recipes";
-import { useParams } from "react-router-dom"
+import { deleteRecipeThunk, getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipes";
+import { useParams, useHistory } from "react-router-dom"
 import Notes from "../Notes/Notes";
 import './Recipe.css'
 import NoteForm from "../NoteForm/NoteForm";
@@ -14,6 +14,7 @@ import trashPNG from '../buttons/trash.png'
 
 const Recipe = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const { recipeId } = useParams()
   const sessionUser = useSelector(state => state.session.user);
   const recipe = useSelector(state => state.recipes[recipeId])
@@ -39,12 +40,20 @@ const Recipe = () => {
   //   return () => document.removeEventListener('click', closeButtons);
   // }, [showButtons])
 
+
+
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
   console.log('existingNote', existingNote)
 
+  const deleteRecipe = (id) => {
+    dispatch(deleteRecipeThunk(id))
+    history.push('/')
+  }
+  
 
   useEffect(() => {
+    dispatch(getAllRecipesThunk()) // updates state
     dispatch(getOneRecipeThunk(recipeId))
   }, [dispatch, recipeId])
 
@@ -59,7 +68,7 @@ const Recipe = () => {
                 {sessionUser && sessionUser.id === recipe.user_id ? 
                   <div >
                     <EditRecipeModal/>
-                    <img id='trashpng' src={trashPNG} onClick={() => {dispatch(deleteRecipeThunk(recipe.id))}}/>
+                    <img id='trashpng' src={trashPNG} onClick={() => deleteRecipe(recipe.id)}/>
                   </div> : <div></div>}
               </div>
               <div id='rp-title-author-container'>
@@ -80,13 +89,13 @@ const Recipe = () => {
           <div id='rp-content'>
             <div id='rp-content-left'>
               <div className='rp-lab'>I N G R E D I E N T S</div>
-              <div>{recipe.ingredients}</div>
+              <div id='rp-ingredients'>{recipe.ingredients}</div>
 
             </div>
             <div id='rp-content-right'>
-              <div className='rp-lab'>P R E P A R A T I O N</div>
+              <div className='rp-lab-prep'>P R E P A R A T I O N</div>
 
-              <div>{recipe.preparation}</div>
+              <div id='rp-preparation'>{recipe.preparation}</div>
 
             </div>
 
@@ -97,7 +106,8 @@ const Recipe = () => {
 
             </div>
             <div id='rp-bot-right'>
-              <div className='rp-lab'>N O T E S</div>
+              <div className='rp-lab-notes'>N O T E S</div>
+              <div id='rp-add-note'> Add Note </div>
 
               <div>{!existingNote ? <NoteForm recipe={recipe}/> : 
 

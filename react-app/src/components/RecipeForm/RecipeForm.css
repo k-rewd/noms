@@ -4,15 +4,19 @@
   border: 1px solid transparent;
   cursor: pointer;
   color: #9A9A9A;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Indie Flower';
   font-weight: bold;
   font-size: small;
   color: red;
+  padding: 15px;
+  
 
 }
 .submit-recipe-button:hover {
   /* background-color: #cfcfcf; */
   border: 1px solid black;
-  transition: .2s;
+  background-color: black;
+  color: white;
+  /* transition: .2s; */
   cursor: pointer;
 }

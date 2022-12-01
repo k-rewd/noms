@@ -31,7 +31,7 @@ const NoteForm = ({ recipe }) => {
 
     const closeSubmitField = (e) => {
       e.preventDefault();
-      setShowErrors(false)
+      setShowErrors(true)
       setShowSubmitField(false)
     }
     document.addEventListener('click', closeSubmitField);
@@ -60,7 +60,6 @@ const NoteForm = ({ recipe }) => {
       let response = await dispatch(createNotesThunk(payload))
       if (response) {
         setShowErrors(false)
-
       }
     }
   }
@@ -73,15 +72,17 @@ const NoteForm = ({ recipe }) => {
   return (
     <div>
       {!existingNote && sessionUser && (
-        <form onClick={openSubmitField} onSubmit={handleSubmit} spellCheck="false">
+        <form className='note-form' onSubmit={handleSubmit} spellCheck="false">
           <textarea
+            className='note-text-area'
+            onClick={openSubmitField}
             type='text'
             placeholder='Note placeholder'
             value={noteBody}
             onChange={(e) => setNoteBody(e.target.value)} />
           {showSubmitField && (
             <div>
-              <div>
+              <div id='note-submit-button-container'>
                 <button disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField} id='submit-button' type='submit'>Submit</button>
               </div>
             </div>

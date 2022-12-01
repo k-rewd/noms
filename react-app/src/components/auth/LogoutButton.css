@@ -3,17 +3,21 @@
   border: 1px solid transparent;
   cursor: pointer;
   color: #9A9A9A;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Work Sans';
   font-weight: bold;
   font-size: small;
   cursor: pointer;
-  color: red;
+  color: black;
+  padding: 17px;
+
 
 }
 .logout-button:hover {
   border: 1px solid black;
   /* background-color: #cfcfcf; */
-  transition: .2s;
+  background-color: black;
+  color: white;
+  /* transition: .2s; */
   cursor: pointer;
 
 }

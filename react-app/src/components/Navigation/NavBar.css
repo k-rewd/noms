@@ -34,7 +34,7 @@
 }
 .logo-n {
   /* text-decoration: none; */
-  font-family: 'Tangerine';
+  font-family: 'Cinzel Decorative';
   font-size: 50px;
 }
 .noms {
@@ -48,7 +48,7 @@
 .right-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 25%;
   margin-right: 2%;
   height: 50px;
