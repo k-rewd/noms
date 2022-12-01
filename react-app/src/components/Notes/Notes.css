@@ -1,0 +1,31 @@
+#note-container {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid red; */
+  width: 100%;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+}
+#note-user-info{
+  /* border: 1px solid red; */
+  width: 25%;
+
+}
+#note-username {
+  /* border: 1px solid red; */
+  font-weight: bold;
+
+
+}
+#note-time-info {
+  /* border: 1px solid red; */
+  color: gray;
+  font-size: 13px;
+}
+
+#note-body {
+  
+  /* border: 1px solid blue; */
+  width: 75%;
+}

@@ -41,7 +41,7 @@
   margin: 10px 10px 0px 10px;
 }
 
-#trashpng {
+.trashpng {
   width: 20px;
   margin-left: 5px;
   cursor: pointer;
@@ -163,4 +163,9 @@
 #rp-footer {
   /* border: 2px solid red; */
   height: 30px;
+}
+
+#user-note-buttons {
+  display: flex;
+  justify-content: flex-end;
 }

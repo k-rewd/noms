@@ -9,6 +9,7 @@ import EditNoteForm from "../EditNoteForm/EditNoteForm";
 import { deleteNoteThunk } from "../../store/notes";
 import EditRecipeModal from "../EditRecipeForm/EditRecipeModal";
 
+import editPNG from '../buttons/edit.png'
 import trashPNG from '../buttons/trash.png'
 
 
@@ -68,7 +69,7 @@ const Recipe = () => {
                 {sessionUser && sessionUser.id === recipe.user_id ? 
                   <div >
                     <EditRecipeModal/>
-                    <img id='trashpng' src={trashPNG} onClick={() => deleteRecipe(recipe.id)}/>
+                    <img className='trashpng' src={trashPNG} onClick={() => deleteRecipe(recipe.id)}/>
                   </div> : <div></div>}
               </div>
               <div id='rp-title-author-container'>
@@ -107,15 +108,17 @@ const Recipe = () => {
             </div>
             <div id='rp-bot-right'>
               <div className='rp-lab-notes'>N O T E S</div>
-              <div id='rp-add-note'> Add Note </div>
+              
 
-              <div>{!existingNote ? <NoteForm recipe={recipe}/> : 
+              <div>{!existingNote ? 
+              <div id='rp-add-note'> Add Note 
+              <NoteForm recipe={recipe}/></div> : 
 
                 <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
-                  <div>
+                  <div id='user-note-buttons'>
                     {/* <div>{existingNote?.note_body}</div> */}
-                    <button onClick={() => setShowEdit(existingNote.id)}>Edit</button>
-                    <button onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }}>Delete</button>
+                    <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)}/>
+                    <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }}/>
                   </div>
                 }</div>
 

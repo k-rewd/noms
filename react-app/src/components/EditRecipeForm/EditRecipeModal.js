@@ -10,7 +10,7 @@ function EditRecipeModal() {
 
   return (
     <>
-      <img id='editpng' src={editPNG}onClick={() => setShowModal(true)}/>
+      <img className='editpng' src={editPNG}onClick={() => setShowModal(true)}/>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditRecipeForm setShowModal={setShowModal} />
