@@ -1,22 +1,18 @@
 .login-button {
   background-color: transparent;
-  /* border-top: 1px solid lightgray;
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  border-bottom: none; */
   border: 1px solid transparent;
-
-  /* font-weight: bold; */
-  /* width: 100px; */
-  /* margin-top: 7px; */
-  /* padding: 16px; */
-  color: #9A9A9A;
-  transition: .4s;
   cursor: pointer;
+  color: #9A9A9A;
+  font-family: 'Work Sans';
+  font-weight: bold;
+  font-size: small;
+  cursor: pointer;
+  color: black;
+  padding: 17px;
 }
 .login-button:hover {
-  /* border: 2px solid #cfcfcf; */
-  background-color: #cfcfcf;
-  transition: .2s;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
   cursor: pointer;
 }
