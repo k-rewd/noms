@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { deleteRecipeThunk, getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipes";
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory, Redirect } from "react-router-dom"
 import Notes from "../Notes/Notes";
 import './Recipe.css'
 import NoteForm from "../NoteForm/NoteForm";
@@ -21,7 +21,7 @@ const Recipe = () => {
   const notes = useSelector(state => state.notes)
   const notesArr = Object.values(notes)
   // console.log('notesBEFORE', notes)
-  // console.log('recipes', recipe)
+  console.log('recipes', recipe)
 
   const [showEdit, setShowEdit] = useState(false)
   // const [showButtons, setShowButtons] = useState(false)
@@ -46,14 +46,15 @@ const Recipe = () => {
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
   console.log('existingNote', existingNote)
 
-  const deleteRecipe = (id) => {
-    dispatch(deleteRecipeThunk(id))
+  const deleteRecipe = async (id) => {
+    await dispatch(deleteRecipeThunk(id))
+    await dispatch(getAllRecipesThunk()) // updates state
     history.push('/')
   }
   
 
   useEffect(() => {
-    dispatch(getAllRecipesThunk()) // updates state
+    
     dispatch(getOneRecipeThunk(recipeId))
   }, [dispatch, recipeId])
 

@@ -37,12 +37,16 @@
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  overflow-x: scroll;
+
 }
 
 #hp-row1 {
+  /* border: 2px solid blue; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 20px;
 }
 #hp-card-link{
   text-decoration: none;
