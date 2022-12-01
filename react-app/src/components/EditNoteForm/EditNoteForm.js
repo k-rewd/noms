@@ -4,7 +4,7 @@ import { Redirect, useParams } from 'react-router-dom'
 import { updateNoteThunk } from '../../store/notes'
 import './EditNoteForm.css'
 
-const EditNoteForm = ({setShowEdit, existingNote}) => {
+const EditNoteForm = ({ setShowEdit, existingNote }) => {
   const dispatch = useDispatch()
   const ref = useRef()
 
@@ -20,10 +20,10 @@ const EditNoteForm = ({setShowEdit, existingNote}) => {
         cb();
       }
     };
-  
+
     useEffect(() => {
       document.addEventListener("click", handleClick);
-  
+
       return () => {
         document.removeEventListener("click", handleClick);
       };
@@ -69,24 +69,24 @@ const EditNoteForm = ({setShowEdit, existingNote}) => {
   });
 
   return (
-    <div  >
+    <div >
       <form onSubmit={handleSubmit} spellCheck="false" ref={ref}>
         <textarea
+          className='note-text-area'
           type='text'
           value={noteBody}
           onChange={(e) => setNoteBody(e.target.value)} />
+            {/* disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField}  */}
         <div id='note-buttons-container'>
-        <div>
+          <button id='edit-note-save-button'type='submit'>Save</button>
           <div>
-            {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
-              <li key={error}>{error}</li>
-            ))}
+            <ul>
+              {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
           </div>
         </div>
-          <button type='submit'>Save</button>
-          <button type='button'>Cancel</button>
-        </div>
-
       </form>
     </div>
   )

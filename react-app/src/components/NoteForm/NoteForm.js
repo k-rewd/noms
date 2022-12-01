@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom'
 // import { useHistory } from 'react-router-dom';
 import { createNotesThunk } from '../../store/notes';
 import './NoteForm.css'
 
-const NoteForm = ({ recipe }) => {
+const NoteForm = ({setShowEdit, recipe }) => {
   const dispatch = useDispatch()
+  const ref = useRef()
   const { recipeId } = useParams()
 
   const [noteBody, setNoteBody] = useState('')
   const [validationErrors, setValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false);
-  const [showSubmitField, setShowSubmitField] = useState(false);
+  // const [showSubmitField, setShowSubmitField] = useState(false);
 
   const notes = useSelector(state => state.notes)
   const notesArr = Object.values(notes)
@@ -26,17 +27,21 @@ const NoteForm = ({ recipe }) => {
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
 
-  useEffect(() => {
-    if (!showSubmitField) return;
-
-    const closeSubmitField = (e) => {
-      e.preventDefault();
-      setShowErrors(true)
-      setShowSubmitField(false)
-    }
-    document.addEventListener('click', closeSubmitField);
-    return () => document.removeEventListener('click', closeSubmitField)
-  }, [showSubmitField]);
+  const useOutsideClick = (ref, cb) => {
+    const handleClick = e => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        cb();
+      }
+    };
+  
+    useEffect(() => {
+      document.addEventListener("click", handleClick);
+  
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    });
+  };
 
   // const createNote = (e) => setNoteBody(e.target.value);
 
@@ -50,6 +55,7 @@ const NoteForm = ({ recipe }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowErrors(true)
+    setShowEdit(false)
 
 
     if (!validationErrors.length) {
@@ -64,26 +70,30 @@ const NoteForm = ({ recipe }) => {
     }
   }
 
-  const openSubmitField = () => {
-    if (showSubmitField) return;
-    setShowSubmitField(true)
-  }
+  // const openSubmitField = () => {
+  //   if (showSubmitField) return;
+  //   setShowSubmitField(true)
+  // }
+  useOutsideClick(ref, () => {
+    setShowEdit(false)
+  });
 
   return (
     <div>
       {!existingNote && sessionUser && (
-        <form className='note-form' onSubmit={handleSubmit} spellCheck="false">
+        <form className='note-form' onSubmit={handleSubmit} spellCheck="false" ref={ref}>
           <textarea
             className='note-text-area'
-            onClick={openSubmitField}
+            // onClick={openSubmitField}
             type='text'
             placeholder='Note placeholder'
             value={noteBody}
             onChange={(e) => setNoteBody(e.target.value)} />
-          {showSubmitField && (
+          {setShowEdit && (
             <div>
+            {/* disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField}  */}
               <div id='note-submit-button-container'>
-                <button disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField} id='submit-button' type='submit'>Submit</button>
+                <button id='submit-button' type='submit'>Submit</button>
                 <div>
                   <div id='note-form-error'>
                     {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
@@ -96,7 +106,7 @@ const NoteForm = ({ recipe }) => {
           )}
         </form>
       )}
-    </div>
+      </div>
   )
 }
 export default NoteForm

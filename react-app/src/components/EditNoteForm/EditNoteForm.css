@@ -3,3 +3,28 @@
   justify-content: space-between;
   flex-direction: row-reverse;
 }
+#edit-note-save-button {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  /* font-weight:600; */
+  /* color: black; */
+  cursor: pointer;
+  font-family: 'Work Sans';
+}
+
+.note-text-area {
+  width: 97%;
+  height: 100px;
+  /* background-color: rgb(231, 231, 231); */
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  overflow: hidden;
+  word-wrap: break-word;
+  resize: none;
+  padding:10px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}

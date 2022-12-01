@@ -10,7 +10,7 @@ import './HomePage.css'
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false)
+  // const [isLoaded, setIsLoaded] = useState(false)
 
   const recipes = useSelector(state => state.recipes)
   const sessionUser = useSelector(state => state.session.user);
