@@ -35,11 +35,13 @@
 .logo-n {
   /* text-decoration: none; */
   font-family: 'Indie Flower';
-  font-size: 50px;
+  font-size: 60px;
+  color: red
 }
 .noms {
   font-family: 'Kanit';
   font-size: 16px;
+  color: black;
 }
 
 
