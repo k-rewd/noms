@@ -1,4 +1,4 @@
-from app.models import db, Recipe, environment, SCHEMA
+from app.models import db, Recipe
 # from faker import Faker
 # import random
 # fake=Faker()
@@ -68,8 +68,5 @@ def seed_recipes():
   db.session.commit()
 
 def undo_recipes():
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.recipes RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute("DELETE FROM recipes;")
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()

@@ -1,4 +1,4 @@
-from app.models import db, Note, environment, SCHEMA
+from app.models import db, Note
 # from faker import Faker
 # import random
 # fake=Faker()
@@ -36,8 +36,5 @@ def seed_notes():
   db.session.commit()
 
 def undo_notes():
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.notes RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute("DELETE FROM notes;")
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()

@@ -1,5 +1,5 @@
 # Start with the python:3.9 image
-From python:3.9
+FROM python:3.9
 # Set the following enviroment variables
 # REACT_APP_BASE_URL -> Your deployment URL
 # FLASK_APP -> entry point to your flask app
