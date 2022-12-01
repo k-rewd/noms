@@ -1,0 +1,137 @@
+#rp-outer-most {
+  
+  width: auto;
+  display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
+  /* position: relative; */
+  border: 2px solid red;
+}
+#rp-header-content-footer-container {
+  margin-top: 50px;
+  border: 2px solid red;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+}
+#rp-header {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 500px;
+  width: 100%;
+  gap: 40px;
+}
+#rp-header-left {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  border: 2px solid blue;
+  width: 40%;
+
+}
+#user-buttons-container {
+  /* border: 1px solid blue; */
+  height: 120px;
+  margin: 10px 10px 0px 10px;
+}
+
+#trashpng {
+  width: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+#rp-title-author-container {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#rp-recipe-title{
+  font-size: 60px;
+  text-transform: uppercase;
+}
+#rp-recipe-author{
+  font-size: large;
+  font-weight: bold;
+  font-family: 'Work Sans';
+}
+#rp-header-right {
+  border: 2px solid blue;
+  width: 70%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* display: flex;
+  align-items: center; */
+
+}
+#hp-card-link{
+  text-decoration: none;
+  color: black
+}
+#rp-recipe-image-container{
+  /* overflow: hidden; */
+}
+#rp-recipe-image {
+  /* height: fit-content; */
+  flex-shrink: 0;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+
+
+#rp-content {
+  border: 2px solid red;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+#rp-content-left {
+  border: 2px solid green;
+  width: 40%;
+}
+.rp-lab{
+  border-top: 2px solid black;
+  font-family: 'Bebas Neue';
+  font-size: 30px;
+}
+#rp-content-right {
+  border: 2px solid green;
+  width: 70%;
+
+}
+
+
+#rp-bottom-container{
+  border: 2px solid red;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+#rp-bot-left{
+  border: 2px solid yellow;
+  width: 40%;
+}
+#rp-bot-right{
+  border: 2px solid yellow;
+  width: 70%;
+
+}
+#rp-footer {
+  border: 2px solid red;
+  height: 30px;
+}

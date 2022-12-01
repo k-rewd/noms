@@ -1,0 +1,18 @@
+
+.submit-recipe-button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: #9A9A9A;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: small;
+  color: red;
+
+}
+.submit-recipe-button:hover {
+  /* background-color: #cfcfcf; */
+  border: 1px solid black;
+  transition: .2s;
+  cursor: pointer;
+}
