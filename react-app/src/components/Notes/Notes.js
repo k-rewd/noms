@@ -24,15 +24,17 @@ const Notes = () => {
 
   if (!notes) return null
   else return (
-    notesArr.map(note => (
-      <div id='note-container'>
-        <div id='note-user-info'>
-        <div id='note-username'>{note.user?.username}</div>
-        <div id='note-time-info'>{note.updated_at ? moment(note.updated_at).fromNow() : moment(note.created_at).fromNow()}</div>
+    <div id='note-order-maybe'>
+      {notesArr.map(note => (
+        <div id='note-container'>
+          <div id='note-user-info'>
+            <div id='note-username'>{note.user?.username}</div>
+            <div id='note-time-info'>{note.updated_at ? moment(note.updated_at).fromNow() : moment(note.created_at).fromNow()}</div>
+          </div>
+          <div id='note-body'>{note.note_body}</div>
         </div>
-        <div id='note-body'>{note.note_body}</div>
-      </div>
-    ))
+      ))
+      }</div>
   )
 }
 

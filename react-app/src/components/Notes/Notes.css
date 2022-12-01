@@ -29,3 +29,8 @@
   /* border: 1px solid blue; */
   width: 75%;
 }
+
+#note-order-maybe {
+  display: flex;
+  flex-direction: column-reverse;
+}
