@@ -84,16 +84,16 @@ const NoteForm = ({ recipe }) => {
             <div>
               <div id='note-submit-button-container'>
                 <button disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField} id='submit-button' type='submit'>Submit</button>
+                <div>
+                  <div id='note-form-error'>
+                    {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
+                      <li key={error}>{error}</li>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}
-          <div>
-            <div>
-              {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
-                <li key={error}>{error}</li>
-              ))}
-            </div>
-          </div>
         </form>
       )}
     </div>
