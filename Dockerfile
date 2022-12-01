@@ -1,5 +1,5 @@
 # Start with the python:3.9 image
-FROM python:3.9
+From python:3.9
 # Set the following enviroment variables
 # REACT_APP_BASE_URL -> Your deployment URL
 # FLASK_APP -> entry point to your flask app
@@ -24,7 +24,7 @@ COPY /react-app/build/* app/static/
 # install -r requirements.txt
 # install psycopg2
 RUN pip install -r requirements.txt
-# RUN pip install psycopg2
+RUN pip install psycopg2
 
 # Start the flask environment by setting our
 # closing command to gunicorn app:app
