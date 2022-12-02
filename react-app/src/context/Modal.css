@@ -21,7 +21,8 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-color: white;
+  /* opacity: .8; */
   display: flex;
   flex-direction: column;
 }
