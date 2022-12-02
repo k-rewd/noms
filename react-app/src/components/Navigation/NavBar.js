@@ -11,6 +11,9 @@ import './NavBar.css'
 // import N from '../buttons/chomskyN.png'
 import nLogoBlack from '../buttons/noms-logo.png'
 import nLogoRed from '../buttons/noms-logo2.png'
+import nLogoBB from '../buttons/noms-logo-black-on-black.png'
+import nLogoBP from '../buttons/noms-logo-black-purple.png'
+import nLogoBR from '../buttons/noms-logo-black-with-red.png'
 
 
 const NavBar = () => {
@@ -31,7 +34,7 @@ const NavBar = () => {
         <div className='nav-home-container'>
           <NavLink to='/' exact={true} activeClassName='active'>
             <div className='home-logo'>
-            <img src={nLogoRed} className='logo-n'/>
+            <img src={nLogoBP} className='logo-n'/>
             <div className='noms'>oms</div>
             </div>
           </NavLink>

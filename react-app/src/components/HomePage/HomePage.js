@@ -5,7 +5,7 @@ import { getAllRecipesThunk } from "../../store/recipes";
 import NavBar from "../Navigation/NavBar";
 
 import SignUpForm from "../auth/SignUpForm";
-
+import imgFail from '../buttons/bar-img-fail.gif'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -39,7 +39,7 @@ const HomePage = () => {
               <div id='hp-recipe-card' key={recipe.id}>
                 <NavLink id='hp-card-link' to={`/recipes/${recipe.id}`}>
                   <div id='hp-recipe-card-image-container'>
-                    <img id='recipe-card-image' src={recipe.recipe_image} />
+                    <img id='recipe-card-image' img onError={(e)=> e.target.src={imgFail}}src={recipe.recipe_image} />
                   </div>
                   <div id='recipe-card-content-container'>
                     <div id='recipe-card-content'>

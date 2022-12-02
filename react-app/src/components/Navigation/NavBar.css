@@ -17,22 +17,27 @@
   display: flex;
   border-right: 2px solid lightgray;
   height: 50px;
-  width: 11.75%;
+  width: 200px;
   align-items: center;
   justify-content: center;
   
 }
+.nav-home-container:hover {
+  background-color: lightgray;
+  
+}
 .home-logo, 
-.home-logo:hover,
-.home-logo:focus,
-.home-logo:active
-.home-logo:link{
+.home-logo:link {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   text-decoration: none;
   color: black;
-  margin: 0;
+  margin-left: 100px;
+  width:200px ;
 }
+/* .home-logo:hover {
+  background-color: lightgray;
+} */
 .logo-n {
   /* text-decoration: none; */
   /* font-family: 'Indie Flower'; */
@@ -43,8 +48,14 @@
 .noms {
   font-family: 'Kanit';
   font-size: 16px;
-  color: black;
+  color: rgb(43, 7, 7);
   /* margin-bottom: 20px;  */
+  position: absolute;
+  margin-left: 43px;
+  font-weight: 800px;
+  padding: 0;
+  /* border-bottom: 4px solid black */
+  /* background-color: black; */
 }
 
 

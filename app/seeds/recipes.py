@@ -68,5 +68,5 @@ def seed_recipes():
   db.session.commit()
 
 def undo_recipes():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('DELETE FROM recipes')
     db.session.commit()
