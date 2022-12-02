@@ -6,6 +6,8 @@ import NavBar from "../Navigation/NavBar";
 
 import SignUpForm from "../auth/SignUpForm";
 import imgFail from '../buttons/bar-img-fail.gif'
+import splashimg from '../buttons/splashimg.jpg'
+import splashimg2 from '../buttons/splashimg2.png'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -29,8 +31,8 @@ const HomePage = () => {
       <div id='hp-outer-most'>
         <div id='hp-cover'>
           <div></div>
-          <img id='hp-banner-photo'
-            src={'https://imbibemagazine.com/wp-content/uploads/2018/10/death-and-co-ideal-martini-horizontal-crdt-dylan-and-jeni.jpg'}
+          <img id='hp-banner-photo' onError={(e)=> e.target.src={splashimg2}}
+            src={splashimg}
           />
         </div>
         <div id='hp-content'>
@@ -39,7 +41,7 @@ const HomePage = () => {
               <div id='hp-recipe-card' key={recipe.id}>
                 <NavLink id='hp-card-link' to={`/recipes/${recipe.id}`}>
                   <div id='hp-recipe-card-image-container'>
-                    <img id='recipe-card-image' img onError={(e)=> e.target.src={imgFail}}src={recipe.recipe_image} />
+                    <img id='recipe-card-image' onError={(e)=> e.target.src={imgFail}} src={recipe.recipe_image} />
                   </div>
                   <div id='recipe-card-content-container'>
                     <div id='recipe-card-content'>

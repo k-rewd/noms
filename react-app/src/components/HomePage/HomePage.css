@@ -50,6 +50,7 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
+  word-wrap: break-word;
 }
 #hp-card-link{
   text-decoration: none;
@@ -95,6 +96,7 @@
   text-transform: capitalize;
   font-family: 'Work Sans';
   font-weight: bold;
+  word-wrap: break-word;
   font-size: 20px;
 
 }

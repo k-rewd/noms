@@ -22,7 +22,7 @@ const Recipe = () => {
   const notes = useSelector(state => state.notes)
   const notesArr = Object.values(notes)
   // console.log('notesBEFORE', notes)
-  console.log('recipes', recipe)
+  // console.log('recipes', recipe)
 
   const [showEdit, setShowEdit] = useState(false)
   // const [showButtons, setShowButtons] = useState(false)
@@ -110,7 +110,7 @@ const Recipe = () => {
               <div className='rp-lab-notes'>N O T E S</div>
               
 
-              <div>{!existingNote ? 
+              <div>{!existingNote && sessionUser? 
               <div id='rp-add-note'> Add Note 
               <NoteForm setShowEdit={setShowEdit} recipe={recipe}/></div> : 
 

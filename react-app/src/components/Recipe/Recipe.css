@@ -33,12 +33,15 @@
   /* justify-content: center; */
   border-bottom: 1px solid lightgray;
   width: 40%;
+  
 
 }
 #user-buttons-container {
   /* border: 1px solid blue; */
   height: 120px;
   margin: 10px 10px 0px 10px;
+  max-width: 97%;
+
 }
 
 .trashpng {
@@ -52,16 +55,24 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
+  max-width: 97%;
+
+  
 }
 
 #rp-recipe-title{
   font-size: 60px;
   text-transform: uppercase;
+  word-wrap: break-word;
+  
+
 }
 #rp-recipe-author{
   font-size: large;
   font-weight: bold;
   font-family: 'Work Sans';
+  word-wrap: break-word;
+  
 }
 #rp-header-right {
   /* border: 2px solid blue; */
@@ -97,6 +108,7 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 40px;
+  max-width: 100%;
 }
 #rp-content-left {
   /* border: 2px solid green; */
@@ -116,6 +128,7 @@
   font-family: 'Bebas Neue';
   font-size: 30px;
   margin-bottom: 10px;
+  
 }
 #rp-add-note {
   font-family: 'Work Sans';
@@ -127,12 +140,20 @@
   font-family: 'Indie Flower';
   margin: 5px;
   font-weight: bold;
+  word-wrap: break-word;
+  max-width: 97%;
+
+
 }
 #rp-preparation {
   font-family: 'Indie Flower';
   margin: 5px;
   /* font-weight: bold; */
   font-size: 20px;
+  word-wrap: break-word;
+  max-width: 80%;
+
+
 
 
 }

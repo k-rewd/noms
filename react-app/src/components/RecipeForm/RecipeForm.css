@@ -60,7 +60,8 @@
   flex-direction: column;
   height: 570px;
   width: 600px;
-  padding: 25px
+  padding: 25px;
+  background-color: whitesmoke;
 }
 .recipe-form-content {
   display: flex;
@@ -73,6 +74,7 @@
   margin-bottom: 2px;
   padding:10px;
   font-size: 14px;
+  word-wrap: break-word;
 
 }
 
@@ -80,13 +82,13 @@
   white-space: pre-wrap; /* or pre-line */
   height: 100px;
   /* border-radius: 5px; */
-  overflow: hidden;
+  /* overflow: hidden; */
   word-wrap: break-word;
   resize: none;
   padding:10px;
   font-size: 14px;
   margin-bottom: 2px;
-  overflow-x: scroll;
+  overflow-y: scroll;
 
 }
 .recipe-form-preparation {
@@ -99,7 +101,7 @@
   padding:10px;
   font-size: 14px;
   margin-bottom: 2px;
-  overflow-x: scroll;
+  overflow-y: scroll;
 }
 .recipe-form-error-space {
   height: 120px;
