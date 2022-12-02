@@ -31,17 +31,20 @@
   align-items: baseline;
   text-decoration: none;
   color: black;
+  margin: 0;
 }
 .logo-n {
   /* text-decoration: none; */
-  font-family: 'Indie Flower';
-  font-size: 60px;
-  color: red
+  /* font-family: 'Indie Flower'; */
+  /* font-size: 60px; */
+  height: 50px;
+  /* color: red */
 }
 .noms {
   font-family: 'Kanit';
   font-size: 16px;
   color: black;
+  /* margin-bottom: 20px;  */
 }
 
 

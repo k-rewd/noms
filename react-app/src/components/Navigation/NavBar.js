@@ -8,7 +8,10 @@ import LogoutButton from '../auth/LogoutButton';
 import SignUpForm from '../auth/SignUpForm';
 import RecipeFormModal from '../RecipeForm/RecipeFormModal';
 import './NavBar.css'
-import N from '../buttons/chomskyN.png'
+// import N from '../buttons/chomskyN.png'
+import nLogoBlack from '../buttons/noms-logo.png'
+import nLogoRed from '../buttons/noms-logo2.png'
+
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
@@ -28,7 +31,7 @@ const NavBar = () => {
         <div className='nav-home-container'>
           <NavLink to='/' exact={true} activeClassName='active'>
             <div className='home-logo'>
-            <div className='logo-n'>N</div>
+            <img src={nLogoRed} className='logo-n'/>
             <div className='noms'>oms</div>
             </div>
           </NavLink>
