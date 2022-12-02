@@ -52,7 +52,7 @@ const Recipe = () => {
     await dispatch(getAllRecipesThunk()) // updates state
     history.push('/')
   }
-  
+
 
   useEffect(() => {
     dispatch(getOneRecipeThunk(recipeId))
@@ -66,10 +66,10 @@ const Recipe = () => {
           <div id='rp-header'>
             <div id='rp-header-left'>
               <div id='user-buttons-container'>
-                {sessionUser && sessionUser.id === recipe.user_id ? 
+                {sessionUser && sessionUser.id === recipe.user_id ?
                   <div >
-                    <EditRecipeModal/>
-                    <img className='trashpng' src={trashPNG} onClick={() => deleteRecipe(recipe.id)}/>
+                    <EditRecipeModal />
+                    <img className='trashpng' src={trashPNG} onClick={() => deleteRecipe(recipe.id)} />
                   </div> : <div></div>}
               </div>
               <div id='rp-title-author-container'>
@@ -108,22 +108,23 @@ const Recipe = () => {
             </div>
             <div id='rp-bot-right'>
               <div className='rp-lab-notes'>N O T E S</div>
-              
 
-              <div>{!existingNote && sessionUser? 
-              <div id='rp-add-note'> Add Note 
-              <NoteForm setShowEdit={setShowEdit} recipe={recipe}/></div> : 
+
+              <div>{!existingNote && sessionUser ?
+                <div id='rp-add-note'> Add Note
+                  <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
 
                 <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
-                  <div id='user-note-buttons'>
-                    {/* <div>{existingNote?.note_body}</div> */}
-                    <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)}/>
-                    <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }}/>
+
+                  <div> {sessionUser ?
+                    <div id='user-note-buttons'>
+                      {/* <div>{existingNote?.note_body}</div> */}
+                      <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
+                      <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
+                    </div> : <div></div>}
+                  </div>}
+                  </div>}
                   </div>
-                }</div>
-
-              }</div>
-
               <Notes />
             </div>
           </div>
