@@ -40,7 +40,7 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setShowErrors(false)
+    // setShowErrors(false)
     setShowEdit(false)
 
     if (!validationErrors.length) {
@@ -50,7 +50,7 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
         recipe_id: existingNote.recipe_id,
         note_body: noteBody
       }
-      console.log('payload~~~', payload)
+      // console.log('payload~~~', payload)
       let response = await dispatch(updateNoteThunk(payload))
 
       if (response) {
@@ -77,9 +77,8 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
           type='text'
           value={noteBody}
           onChange={(e) => setNoteBody(e.target.value)} />
-            {/*  onMouseDown={handleSubmit} visible={showSubmitField}  */}
         <div id='note-buttons-container'>
-          <button disable={validationErrors.length > 0} id='edit-note-save-button'type='submit'>Save</button>
+          <button disabled={validationErrors.length > 0} id='edit-note-save-button' type='submit'>Save</button>
           <div>
             <ul className='edit-note-form-error'>
               {showErrors && validationErrors.length > 0 && validationErrors.map(error => (

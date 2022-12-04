@@ -85,7 +85,7 @@ const NoteForm = ({setShowEdit, recipe }) => {
         <form className='note-form' onSubmit={handleSubmit} spellCheck="false" ref={ref}>
           <textarea
             className='note-text-area'
-            // onClick={openSubmitField}
+            onClick={() => setShowEdit(false)}
             type='text'
             placeholder='Note placeholder'
             value={noteBody}
