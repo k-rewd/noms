@@ -52,16 +52,8 @@ const HomePage = () => {
                   hire me now.
                 </div>
                 <img id='dev-about-site-circle' src={nomslogoWR} />
-
-
-
               </div>
-
             </div>
-
-
-
-
           </div>
           <img id='hp-banner-photo'
           onError={(e) => e.target.src = splashimg2}
