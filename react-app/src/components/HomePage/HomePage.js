@@ -8,6 +8,8 @@ import SignUpForm from "../auth/SignUpForm";
 import imgFail from '../buttons/imgfailgif.gif'
 import splashimg from '../buttons/splashimg.jpg'
 import splashimg2 from '../buttons/splashimg2.png'
+
+import nomslogoWR from '../buttons/noms-logo.png'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -30,9 +32,40 @@ const HomePage = () => {
     <div>
       <div id='hp-outer-most'>
         <div id='hp-cover'>
-          <div></div>
-          <img id='hp-banner-photo' onError={(e) => e.target.src = { splashimg2 }}
-            src={splashimg}
+          <div id='dev-divs'>
+            <div id='dev-divs-left'>
+              <div id='dev-about-links'>
+                <a href='https://github.com/k-rewd' target='_blank' rel='noreferrer'>
+                  <i className="fa-brands fa-github"></i></a>
+                <a href='https://www.linkedin.com/in/andrew-k-474479123/' target='_blank' rel='noreferrer'>
+                  <i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+            <div id='dev-divs-right'>
+              <div id='dev-about-site'>
+                <h2 id='about-noms'>ABOUT noms . . .</h2>
+                <div id='dev-about-site-message'>
+                  This is a message from the developer about the
+                  website. You can do this and that and all these
+                  other things. check it out. I just can't think of
+                  anything to write here atm but i'll get to it. i promise...
+                  hire me now.
+                </div>
+                <img id='dev-about-site-circle' src={nomslogoWR} />
+
+
+
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+          <img id='hp-banner-photo'
+          onError={(e) => e.target.src = splashimg2}
+          src={splashimg}
           />
         </div>
         <div id='hp-content'>

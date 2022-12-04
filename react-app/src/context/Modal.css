@@ -9,6 +9,9 @@
   justify-content: center;
   align-items: center;
 }
+#modal {
+  z-index: 2;
+}
 
 #modal-background {
   position: fixed;
