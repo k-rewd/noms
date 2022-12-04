@@ -31,7 +31,7 @@ const HomePage = () => {
       <div id='hp-outer-most'>
         <div id='hp-cover'>
           <div></div>
-          <img id='hp-banner-photo' onError={(e)=> e.target.src={splashimg2}}
+          <img id='hp-banner-photo' onError={(e) => e.target.src = { splashimg2 }}
             src={splashimg}
           />
         </div>
@@ -41,7 +41,9 @@ const HomePage = () => {
               <div id='hp-recipe-card' key={recipe.id}>
                 <NavLink id='hp-card-link' to={`/recipes/${recipe.id}`}>
                   <div id='hp-recipe-card-image-container'>
-                    <img id='recipe-card-image' onError={(e)=> e.target.src={imgFail}} src={recipe.recipe_image} />
+                    <img id='recipe-card-image'
+                      onError={(e) => e.target.src = imgFail}
+                      src={recipe.recipe_image} />
                   </div>
                   <div id='recipe-card-content-container'>
                     <div id='recipe-card-content'>

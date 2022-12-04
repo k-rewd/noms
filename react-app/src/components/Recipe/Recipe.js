@@ -8,6 +8,7 @@ import NoteForm from "../NoteForm/NoteForm";
 import EditNoteForm from "../EditNoteForm/EditNoteForm";
 import { deleteNoteThunk } from "../../store/notes";
 import EditRecipeModal from "../EditRecipeForm/EditRecipeModal";
+import imgFail from '../buttons/bar-img-fail.gif'
 
 import editPNG from '../buttons/edit.png'
 import trashPNG from '../buttons/trash.png'
@@ -82,6 +83,7 @@ const Recipe = () => {
                 <img
                   alt='recipe-img'
                   // onError={(e) => e.target.src = defaultPro}
+                  onError={(e) => e.target.src = imgFail}
                   id='rp-recipe-image'
                   src={recipe.recipe_image} />
               </div>
