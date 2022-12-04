@@ -27,7 +27,7 @@ const RecipeForm = ({ setShowModal }) => {
   useEffect(() => {
     const errors = []
     if (!title) errors.push('Title is required!')
-    else if (title.length > 25) errors.push('Title too long!(25 characters)')
+    else if (title.length > 20) errors.push('Title too long!(25 characters)')
     if (!ingredients) errors.push('Ingredients required')
     else if (ingredients.length > 500) errors.push('Ingredients too long(500 characters)')
     if (!preparation) errors.push('Preparation field cannot be empty')
@@ -62,7 +62,7 @@ const RecipeForm = ({ setShowModal }) => {
     <div className='recipe-form-modal'>
       <div>
         <form className='recipe-form' onSubmit={handleSubmit}>
-          <div className='form-title-container'><h2 className='form-title'>Share your Recipe</h2></div>
+          <div className='form-title-container'><h2 className='form-title'>SHARE YOUR RECIPE</h2></div>
           <div className='recipe-form-content'>
             <input
               className='recipe-form-title'
@@ -95,7 +95,7 @@ const RecipeForm = ({ setShowModal }) => {
                   <li key={error}>{error}</li>))}
               </ul>
             </div>
-            <button className='submit-recipe-button-form' type='submit'>Submit Your Recipe</button>
+            <button className='submit-recipe-button-form' type='submit'>SUBMIT YOUR RECIPE</button>
           </div>
 
         </form>

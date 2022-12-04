@@ -99,11 +99,7 @@ const Recipe = () => {
               <div className='rp-lab-prep'>P R E P A R A T I O N</div>
 
               <div id='rp-preparation'>{recipe.preparation}</div>
-
-            </div>
-
-          </div>
-          <div id='rp-bottom-container'>
+              <div id='rp-bottom-container'>
             <div id='rp-bot-left'>
               {/* <div>RATINGS</div> */}
 
@@ -127,9 +123,15 @@ const Recipe = () => {
                   </div>}
                   </div>}
                   </div>
+                  <div id='rp-notes-container'>
               <Notes />
+              </div>
             </div>
           </div>
+            </div>
+
+          </div>
+
           <div id='rp-footer'>
 
           </div>

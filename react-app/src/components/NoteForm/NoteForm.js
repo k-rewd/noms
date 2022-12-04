@@ -94,7 +94,7 @@ const NoteForm = ({setShowEdit, recipe }) => {
             <div>
             {/* disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField}  */}
               <div id='note-submit-button-container'>
-                <button id='submit-button' disabled={validationErrors.length > 0} type='submit'>Submit</button>
+                <button id='submit-button' type='submit'>Submit</button>
                 <div>
                   <div id='note-form-error'>
                     {showErrors && validationErrors.length > 0 && validationErrors.map(error => (

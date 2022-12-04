@@ -7,7 +7,8 @@
   align-items: center;
   position: fixed;
   width: 100%;
-  border-bottom: 1px solid gray;
+  box-shadow: .5px .5px .5px .5px lightgray;
+
   background-color: white;
   z-index: 1;
 }

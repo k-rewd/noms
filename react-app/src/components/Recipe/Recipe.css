@@ -1,12 +1,14 @@
 #rp-outer-most {
-  
+
   width: auto;
   display: flex;
   justify-content: center;
   background-color: whitesmoke;
+  height: 100vh;
   /* position: relative; */
   /* border: 2px solid red; */
 }
+
 #rp-header-content-footer-container {
   margin-top: 50px;
   /* border: 2px solid red; */
@@ -14,9 +16,10 @@
   height: 100vh;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
 }
+
 #rp-header {
   /* border: 2px solid red; */
   margin-top: 25px;
@@ -26,19 +29,25 @@
   height: 450px;
   width: 100%;
   gap: 40px;
+  margin-bottom: 25px;
 }
+
 #rp-header-left {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  border-bottom: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
   width: 40%;
-  
+  background-color: white;
+  box-shadow: .5px .5px .5px .5px lightgray;
+  height: fit-content;
+
 
 }
+
 #user-buttons-container {
   /* border: 1px solid blue; */
-  height: 120px;
+  height: 100px;
   margin: 10px 10px 0px 10px;
   max-width: 97%;
 
@@ -49,31 +58,36 @@
   margin-left: 5px;
   cursor: pointer;
 }
+
 #rp-title-author-container {
-  height: 50%;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
-  max-width: 97%;
+  padding: 0px 20px 36px 20px;
+  max-width: 100%;
+  background-color: white;
 
-  
+
 }
 
-#rp-recipe-title{
+#rp-recipe-title {
   font-size: 60px;
   text-transform: uppercase;
   word-wrap: break-word;
-  
+  max-width: 350px;
+
 
 }
-#rp-recipe-author{
+
+#rp-recipe-author {
   font-size: large;
   font-weight: bold;
   font-family: 'Work Sans';
   word-wrap: break-word;
-  
+
 }
+
 #rp-header-right {
   /* border: 2px solid blue; */
   width: 70%;
@@ -86,18 +100,23 @@
   align-items: center; */
 
 }
+
 /* #hp-card-link{
   text-decoration: none;
   color: black
 } */
-#rp-recipe-image-container{
+#rp-recipe-image-container {
   width: 100%;
+  height: 100%;
   /* overflow: hidden; */
+
 }
+
 #rp-recipe-image {
   /* height: fit-content; */
   /* flex-shrink: 0; */
   width: 100%;
+
 }
 
 #rp-content {
@@ -107,56 +126,82 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 40px;
+  gap: 35px;
   max-width: 100%;
 }
+
 #rp-content-left {
   /* border: 2px solid green; */
   width: 40%;
 }
-.rp-lab{
+
+.rp-lab {
   /* border-top: 2px solid black; */
   font-family: 'Bebas Neue';
   font-size: 30px;
 }
+
 .rp-lab-prep {
   font-family: 'Bebas Neue';
   font-size: 30px;
+
 }
+
 .rp-lab-notes {
-  border-top: 2px solid black;
+  /* border-top: 2px solid black; */
   font-family: 'Bebas Neue';
   font-size: 30px;
-  margin-bottom: 10px;
-  
+
+  margin: 10px 0px 0px 0px;
+
+
 }
+
 #rp-add-note {
   font-family: 'Work Sans';
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-weight: bold;
+
 }
 
-#rp-ingredients{
-  font-family: 'Indie Flower';
-  margin: 5px;
-  font-weight: bold;
-  word-wrap: break-word;
-  max-width: 97%;
-
-
-}
-#rp-preparation {
-  font-family: 'Indie Flower';
-  margin: 5px;
+#rp-ingredients {
+  font-family: 'IBM Plex Serif';
+  margin-top: 5px;
+  /* margin-right: 0px; */
   /* font-weight: bold; */
-  font-size: 20px;
   word-wrap: break-word;
-  max-width: 80%;
+  max-width: 100%;
+  white-space: pre-wrap;
+  background-color: white;
+  padding: 20px;
+  box-shadow: .5px .5px .5px .5px lightgray;
+
 
 
 
 
 }
+
+#rp-preparation {
+  font-family: 'IBM Plex Serif';
+  /* margin: 0px; */
+  /* font-weight: bold; */
+  /* font-size: 16px; */
+  word-wrap: break-word;
+  max-width: 100%;
+  white-space: pre-wrap;
+  background-color: white;
+  box-shadow: .5px .5px .5px .5px lightgray;
+  padding: 20px 20px 50px 20px;
+  height: fit-content;
+
+
+
+
+
+
+}
+
 #rp-content-right {
   /* border: 2px solid green; */
   width: 70%;
@@ -164,25 +209,41 @@
 }
 
 
-#rp-bottom-container{
+#rp-bottom-container {
   /* border: 2px solid red; */
-  flex: 1;
+  /* flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 40px;
+  gap: 40px; */
 }
-#rp-bot-left{
+
+#rp-bot-left {
   /* border: 2px solid yellow; */
-  width: 40%;
+  /* width: 40%; */
 }
-#rp-bot-right{
+
+#rp-bot-right {
   /* border: 2px solid yellow; */
-  width: 70%;
+  width: 100%;
+
+}
+
+#rp-notes-container {
+  /* background-color: white; */
+  /* box-shadow: 1px 2px 2px 2px lightgray; */
+  /* padding: 20px 0px 0px 10px; */
 
 }
 
 #user-note-buttons {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 5px;
 }
+
+/* #rp-footer {
+  background-color: whitesmoke;
+  height: 200px;
+  width: 100%;
+} */
