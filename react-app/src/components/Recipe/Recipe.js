@@ -8,7 +8,7 @@ import NoteForm from "../NoteForm/NoteForm";
 import EditNoteForm from "../EditNoteForm/EditNoteForm";
 import { deleteNoteThunk } from "../../store/notes";
 import EditRecipeModal from "../EditRecipeForm/EditRecipeModal";
-import imgFail from '../buttons/bar-img-fail.gif'
+import imgFail from '../buttons/imgfailgif.gif'
 
 import editPNG from '../buttons/edit.png'
 import trashPNG from '../buttons/trash.png'

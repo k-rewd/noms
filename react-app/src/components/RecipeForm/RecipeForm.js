@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useParams, useHistory } from 'react-router-dom'
 import { createRecipeThunk } from '../../store/recipes'
 import './RecipeForm.css'
-import imgFail from '../buttons/bar-img-fail.gif'
+
 
 const RecipeForm = ({ setShowModal }) => {
   const dispatch = useDispatch()

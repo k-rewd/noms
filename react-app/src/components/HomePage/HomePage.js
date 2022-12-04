@@ -5,7 +5,7 @@ import { getAllRecipesThunk } from "../../store/recipes";
 import NavBar from "../Navigation/NavBar";
 
 import SignUpForm from "../auth/SignUpForm";
-import imgFail from '../buttons/bar-img-fail.gif'
+import imgFail from '../buttons/imgfailgif.gif'
 import splashimg from '../buttons/splashimg.jpg'
 import splashimg2 from '../buttons/splashimg2.png'
 import './HomePage.css'
