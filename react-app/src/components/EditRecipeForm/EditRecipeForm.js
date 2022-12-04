@@ -74,19 +74,19 @@ const EditRecipeForm = ({ setShowModal }) => {
             <input
               className='recipe-form-image'
               type='url'
-              placeholder='Image(URL)'
+              placeholder='Image URL: png | gif | webp | jpeg | jpg'
               value={recipeImage}
               onChange={updateRecipeImage} />
             <textarea
               className='recipe-form-ingredients'
               type='text'
-              placeholder='Ingredients'
+              placeholder='Ingredients: Feel free to separate ingredients by line breaks'
               value={ingredients}
               onChange={updateIngredients} />
             <textarea
               className='recipe-form-preparation'
               type='text'
-              placeholder='Preparation'
+              placeholder='Preparation: Feel free to separate steps by line breaks'
               value={preparation}
               onChange={updatePreparation} />
             <div className='recipe-form-error-space'>
