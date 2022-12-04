@@ -242,8 +242,7 @@
   margin-bottom: 5px;
 }
 
-/* #rp-footer {
+#rp-footer {
   background-color: whitesmoke;
-  height: 200px;
-  width: 100%;
-} */
+  padding: 10px;
+}

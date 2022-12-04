@@ -2,11 +2,12 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: whitesmoke;
 }
 
 * {
   font-family: 'Work Sans';
-  /* background-color: whitesmoke; */
+
 }
 
 body::-webkit-scrollbar {

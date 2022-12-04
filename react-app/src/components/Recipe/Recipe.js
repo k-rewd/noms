@@ -100,41 +100,37 @@ const Recipe = () => {
 
               <div id='rp-preparation'>{recipe.preparation}</div>
               <div id='rp-bottom-container'>
-            <div id='rp-bot-left'>
-              {/* <div>RATINGS</div> */}
+                <div id='rp-bot-left'>
+                  {/* <div>RATINGS</div> */}
 
-            </div>
-            <div id='rp-bot-right'>
-              <div className='rp-lab-notes'>N O T E S</div>
+                </div>
+                <div id='rp-bot-right'>
+                  <div className='rp-lab-notes'>N O T E S</div>
 
 
-              <div>{!existingNote && sessionUser ?
-                <div id='rp-add-note'> Add Note
-                  <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
+                  <div>{!existingNote && sessionUser ?
+                    <div id='rp-add-note'> Add Note
+                      <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
 
-                <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
+                    <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
 
-                  <div> {sessionUser ?
-                    <div id='user-note-buttons'>
-                      {/* <div>{existingNote?.note_body}</div> */}
-                      <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
-                      <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
-                    </div> : <div></div>}
-                  </div>}
-                  </div>}
+                      <div> {sessionUser ?
+                        <div id='user-note-buttons'>
+                          {/* <div>{existingNote?.note_body}</div> */}
+                          <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
+                          <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
+                        </div> : <div></div>}
+                      </div>}
+                    </div>}
                   </div>
                   <div id='rp-notes-container'>
-              <Notes />
+                    <Notes />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-            </div>
-
-          </div>
-
-          <div id='rp-footer'>
-
-          </div>
+          <div id='rp-footer'></div>
         </div>
 
       </div>
