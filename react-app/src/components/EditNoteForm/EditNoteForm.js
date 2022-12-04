@@ -40,7 +40,7 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // setShowErrors(false)
+    // setShowErrors(true)
     setShowEdit(false)
 
     if (!validationErrors.length) {

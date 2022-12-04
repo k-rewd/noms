@@ -20,9 +20,9 @@ const NoteForm = ({setShowEdit, recipe }) => {
   // const newNote = notesArr[0]
   // const newNote = notesArr[0]
   const sessionUser = useSelector(state => state.session.user);
-  console.log('note selector', notes)
+  // console.log('note selector', notes)
   // console.log('notesrecipeid', {notes})
-  console.log('notesArr', notesArr.id)
+  // console.log('notesArr', notesArr.id)
 
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
@@ -94,7 +94,7 @@ const NoteForm = ({setShowEdit, recipe }) => {
             <div>
             {/* disable={!noteBody} onMouseDown={handleSubmit} visible={showSubmitField}  */}
               <div id='note-submit-button-container'>
-                <button id='submit-button' type='submit'>Submit</button>
+                <button id='submit-button' disabled={validationErrors.length > 0} type='submit'>Submit</button>
                 <div>
                   <div id='note-form-error'>
                     {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
