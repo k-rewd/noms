@@ -95,7 +95,7 @@ const EditRecipeForm = ({ setShowModal }) => {
                   <li key={error}>{error}</li>))}
               </ul>
             </div>
-            <button className='submit-recipe-button-form' type='submit'>SUBMIT YOUR RECIPE</button>
+            <button className='submit-recipe-button-form' type='submit'>SAVE YOUR RECIPE</button>
           </div>
         </form>
       </div>
