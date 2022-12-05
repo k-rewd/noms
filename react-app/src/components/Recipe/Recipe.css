@@ -211,19 +211,6 @@
 }
 
 
-#rp-bottom-container {
-  /* border: 2px solid red; */
-  /* flex: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 40px; */
-}
-
-#rp-bot-left {
-  /* border: 2px solid yellow; */
-  /* width: 40%; */
-}
 
 #rp-bot-right {
   /* border: 2px solid yellow; */
@@ -231,12 +218,6 @@
 
 }
 
-#rp-notes-container {
-  /* background-color: white; */
-  /* box-shadow: 1px 2px 2px 2px lightgray; */
-  /* padding: 20px 0px 0px 10px; */
-
-}
 
 #user-note-buttons {
   display: flex;
