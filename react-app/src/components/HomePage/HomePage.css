@@ -143,7 +143,7 @@
 #hp-row1 {
   /* border: 2px solid blue; */
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   gap: 20px;
   word-wrap: break-word;
