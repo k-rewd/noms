@@ -19,6 +19,9 @@
   /* justify-content: space-between; */
 
 }
+#add-note-add-note {
+  margin-bottom: 5px;
+}
 
 #rp-header {
   /* border: 2px solid red; */
@@ -116,7 +119,6 @@
   /* height: fit-content; */
   /* flex-shrink: 0; */
   width: 100%;
-
 }
 
 #rp-content {

@@ -46,7 +46,7 @@
   /* border: 1px solid pink; */
   display: flex;
   gap: 10px;
-  margin: 10px;
+  margin: 10px 10px 10px 30px;
 
 }
 .dev-link-buttons {
@@ -82,6 +82,10 @@
   border-radius: 50px 0px 50px 0px;
 
 }
+.bold-this {
+  font-weight: bold;
+  font-style: italic;
+}
 #about-noms {
   margin: 20px 5px 10px 0px;
   border-bottom: 1px solid lightgray;
@@ -103,7 +107,7 @@
   height: 100px;
   width: 100px;
   position: absolute;
-  margin-top: -230px;
+  margin-top: -320px;
   margin-left: 245px;
   display: flex;
   align-items: center;

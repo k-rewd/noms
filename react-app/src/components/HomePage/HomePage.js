@@ -45,11 +45,31 @@ const HomePage = () => {
               <div id='dev-about-site'>
                 <h2 id='about-noms'>ABOUT noms . . .</h2>
                 <div id='dev-about-site-message'>
-                  This is a message from the developer about the
-                  website. You can do this and that and all these
-                  other things. check it out. I just can't think of
-                  anything to write here atm but i'll get to it. i promise...
-                  hire me now.
+                  Welcome to 
+                  <span className='bold-this'> noms</span> ...!!
+                  <br/> 
+                  <br/> 
+                  A place where you can
+                  <br/> 
+                  <div className='bold-this'>
+                  CREATE, READ, UPDATE, DELETE
+                  </div> 
+                  recipes for your favorite 
+                  drinks
+                  <br/> 
+                  <br/> 
+                  and also . . . wait for . . .
+                  <br/> 
+                  <br/>
+                  <div className='bold-this'>
+                  CREATE, READ, UPDATE, DELETE
+                  </div> 
+                  notes for those recipes!
+                  <br/> 
+                  <br/> 
+                  <div className='bold-this'>
+                  waaoowww~!!
+                  </div>
                 </div>
                 <img id='dev-about-site-circle' src={nomslogoWR} />
               </div>
