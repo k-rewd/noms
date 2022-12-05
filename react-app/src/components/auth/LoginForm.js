@@ -38,8 +38,8 @@ const LoginForm = () => {
     if (data) {
       let err = []
       for (let error of data) {
-        if (error.startsWith('email')) err.push('email: Invalid email')
-        if (error.startsWith('password')) err.push('password: Invalid password')
+        if (error.startsWith('email')) err.push('Invalid email')
+        if (error.startsWith('password')) err.push('Invalid password')
         setErrors(err)
       }
       return

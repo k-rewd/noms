@@ -74,7 +74,7 @@
 
 #dev-about-site {
   /* border: 1px solid palevioletred; */
-  height: 210px;
+  height: 300px;
   width: 300px;
   margin: 0px 80px 20px 0px;
   background-color: lightgray;
@@ -87,10 +87,12 @@
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: center;
+  
 }
 #dev-about-site-message {
   word-wrap: break-word;
-  margin: 0px 10px 0px 20px
+  margin: 0px 10px 0px 20px;
+  
   
 }
 
@@ -107,7 +109,6 @@
   align-items: center;
   justify-content: center;
   font-size: 15px;
-
 }
 
 

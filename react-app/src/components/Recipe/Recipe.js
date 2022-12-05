@@ -109,7 +109,8 @@ const Recipe = () => {
 
 
                   <div>{!existingNote && sessionUser ?
-                    <div id='rp-add-note'> Add Note
+                    <div id='rp-add-note'> 
+                    <div>Add Note</div>
                       <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
 
                     <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
