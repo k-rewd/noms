@@ -82,6 +82,8 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
+
+  console.log('response from signup thunk', response)
   
   if (response.ok) {
     const data = await response.json();

@@ -38,11 +38,15 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setShowErrors(true)
+
     if (!errors.length) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
-        setErrors(data)
-        setShowModal(false)
+        setErrors(data.map(dat => dat.slice(dat.indexOf(':') +1) ))
+        // console.log('data from authsignup', data)
+        setShowErrors(true)
+        // setShowModal(false)
       }
       return
     }
