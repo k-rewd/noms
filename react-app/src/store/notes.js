@@ -51,8 +51,8 @@ export const createNotesThunk = (payload) => async dispatch => {
     headers: { "Content-Type": "application/json"},
     body: JSON.stringify(payload)
   })
-  console.log('response from createNoteThunk', response)
-  console.log('payload from createNoteThunk', payload)
+  // console.log('response from createNoteThunk', response)
+  // console.log('payload from createNoteThunk', payload)
   if (response.ok) {
     const note = await response.json();
     await dispatch(actionCreateNote(note))
@@ -60,14 +60,14 @@ export const createNotesThunk = (payload) => async dispatch => {
   }
 }
 export const updateNoteThunk = (payload) => async dispatch => {
-  console.log('updateNote payload', payload)
+  // console.log('updateNote payload', payload)
   const response = await fetch(`/api/notes/${payload.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json"},
     body: JSON.stringify(payload)
   })
-  console.log('updateNote response', response)
-  console.log('updateNote payload', payload)
+  // console.log('updateNote response', response)
+  // console.log('updateNote payload', payload)
   if (response.ok) {
     const updatedNote = await response.json();
     await dispatch(actionUpdateNote(updatedNote))

@@ -18,7 +18,7 @@ const HomePage = () => {
 
   const recipes = useSelector(state => state.recipes)
   const sessionUser = useSelector(state => state.session.user);
-  console.log('RECIPES ', recipes)
+  // console.log('RECIPES ', recipes)
   // const recipesArr = Object.values(recipes)
   // console.log('recipeArr', recipesArr)
 

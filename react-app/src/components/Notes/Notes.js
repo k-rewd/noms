@@ -15,8 +15,8 @@ const Notes = () => {
   const notes = useSelector(state => state.notes)
   const notesArr = Object.values(notes)
 
-  console.log('notes', notes)
-  console.log('notesArr', notesArr)
+  // console.log('notes', notes)
+  // console.log('notesArr', notesArr)
 
   useEffect(() => {
     dispatch(getAllNotesThunk(recipeId))

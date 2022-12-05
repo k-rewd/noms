@@ -46,7 +46,7 @@ const Recipe = () => {
 
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
-  console.log('existingNote', existingNote)
+  // console.log('existingNote', existingNote)
 
   const deleteRecipe = async (id) => {
     await dispatch(deleteRecipeThunk(id))
