@@ -3,6 +3,9 @@ from ..models import db, Recipe, Note
 from ..forms import RecipeForm, NoteForm
 from flask_login import login_required, current_user
 
+# AWS
+from ..aws import (upload_file_to_s3, allowed_file, get_unique_filename)
+
 def validation_errors(validation_errors):
     errorMessages = []
     for field in validation_errors:
@@ -10,8 +13,9 @@ def validation_errors(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-recipe_routes = Blueprint('recipe', __name__)
 
+
+recipe_routes = Blueprint('recipe', __name__)
 
 # ALL RECIPE
 @recipe_routes.route('/')
@@ -35,12 +39,18 @@ def recipe(id):
 
   return recipe_dictionary
 
+
+
+
 # NEW RECIPE
 @recipe_routes.route('/new', methods=["POST"])
 @login_required
 def new_recipe():
   form = RecipeForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+
+
+
 
   if form.validate_on_submit():
     recipe = Recipe(
@@ -51,10 +61,20 @@ def new_recipe():
       # time=form.time.data,
       recipe_image=form.recipe_image.data
     )
+
+    # if "recipe_image" not in request.files:
+    #   return {"errors": "image required"}, 400
+
+    print('request.files-------------------------------', request.files)
+
     db.session.add(recipe)
     db.session.commit()
     return recipe.to_dict()
+
   return {'errors': validation_errors(form.error), 'statusCode': 401}
+
+
+
 
 #UPDATE RECIPE
 @recipe_routes.route('/<int:id>', methods=["PUT"])

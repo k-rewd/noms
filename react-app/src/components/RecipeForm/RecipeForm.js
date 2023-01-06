@@ -28,8 +28,8 @@ const RecipeForm = ({ setShowModal }) => {
     const errors = []
     if (!title) errors.push('Title is required!')
     else if (title.length > 25) errors.push('Title too long! (25 characters)')
-    if (!recipeImage) errors.push('Please provide a valid image of your creation')
-    else if (recipeImage && !recipeImage.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi)) errors.push('Please enter a valid URL ending with png, gif, webp, jpeg, or jpg')
+    // if (!recipeImage) errors.push('Please provide a valid image of your creation')
+    // else if (recipeImage && !recipeImage.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi)) errors.push('Please enter a valid URL ending with png, gif, webp, jpeg, or jpg')
     if (!ingredients) errors.push('Ingredients required')
     else if (ingredients.length > 500) errors.push('Ingredients too long(500 characters)')
     if (!preparation) errors.push('Preparation field cannot be empty')
@@ -72,8 +72,8 @@ const RecipeForm = ({ setShowModal }) => {
               onChange={newTitle} />
             <input
               className='recipe-form-image'
-              type='url'
-              placeholder='Image URL: png | gif | webp | jpeg | jpg'
+              type='file'
+              // placeholder='Image URL: png | gif | webp | jpeg | jpg'
               value={recipeImage}
               onChange={newRecipeImage} />
             <textarea
