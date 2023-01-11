@@ -27,25 +27,30 @@ const RecipeForm = ({ setShowModal }) => {
   const newTitle = (e) => setTitle(e.target.value)
   const newIngredients = (e) => setIngredients(e.target.value)
   const newPreparation = (e) => setPreparation(e.target.value)
+  const newRecipeImage = (e) => {
+    const file = e.target.files[0];
+    // console.log('file', file)
+    setRecipeImage(file)
+  }
+
+
+
+  useEffect(() => {
+    const errors = []
+    if (!title) errors.push('Title is required!')
+    else if (title.length > 25) errors.push('Title too long! (25 characters)')
+    // if (!recipeImage) errors.push('Please provide a valid image of your creation')
+    // else if (recipeImage && !recipeImage.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi)) errors.push('Please enter a valid URL ending with png, gif, webp, jpeg, or jpg')
+    if (!ingredients) errors.push('Ingredients required')
+    else if (ingredients.length > 500) errors.push('Ingredients too long(500 characters)')
+    if (!preparation) errors.push('Preparation field cannot be empty')
+    else if (preparation.length > 500) errors.push('Preparation too long. Consider making a recipe pt2')
+
+    setValidationErrors(errors)
+  }, [title, ingredients, preparation, recipeImage])
   const handleSubmit = async (e) => {
     e.preventDefault()
     setShowErrors(true)
-
-
-    useEffect(() => {
-      const errors = []
-      if (!title) errors.push('Title is required!')
-      else if (title.length > 25) errors.push('Title too long! (25 characters)')
-      // if (!recipeImage) errors.push('Please provide a valid image of your creation')
-      // else if (recipeImage && !recipeImage.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi)) errors.push('Please enter a valid URL ending with png, gif, webp, jpeg, or jpg')
-      if (!ingredients) errors.push('Ingredients required')
-      else if (ingredients.length > 500) errors.push('Ingredients too long(500 characters)')
-      if (!preparation) errors.push('Preparation field cannot be empty')
-      else if (preparation.length > 500) errors.push('Preparation too long. Consider making a recipe pt2')
-
-      setValidationErrors(errors)
-    }, [title, ingredients, preparation, recipeImage])
-
     const recipeForm = document.getElementById('recipe-form-id')
 
 
@@ -98,11 +103,7 @@ const RecipeForm = ({ setShowModal }) => {
     // }
   }
 
-  const newRecipeImage = (e) => {
-    const file = e.target.files[0];
-    // console.log('file', file)
-    setRecipeImage(file)
-  }
+
 
   return (
     <div className='recipe-form-modal'>
