@@ -40,38 +40,86 @@ def recipe(id):
   return recipe_dictionary
 
 
+#--------------------------------------------------------------------#
+
+# AWS
+@recipe_routes.route('/new', methods=["POST"])
+@login_required
+def upload():
+  if "recipe_image" not in request.files:
+    return {"errors": "image required"}, 400
+
+  print('request.files-------------------------------', request.files)
+
+
+  image = request.files["recipe_image"]
+
+  if not allowed_file(image.filename):
+    return {"errors": "file type not permitted"}, 400
+  
+  image.filename = get_unique_filename(image.filename)
+
+  upload = upload_file_to_s3(image)
+
+  if "url" not in upload:
+    return upload, 400
+
+  data = request.form
+  print('dataa------------------------------------', data)
+  print('request------------------------------------', request)
+
+  
+  url = upload["url"]
+
+  new_recipe = Recipe (
+    user_id=current_user.id,
+    title=data["title"],
+    ingredients=data["ingredients"],
+    preparation=data["prepartion"],
+    recipe_image=url
+    )
+
+  db.session.add(new_recipe)
+  db.session.commit()
+  return {"url": url}
+
+
+  # print('request.files-------------------------------',  request.files["recipe_image"] )
+ ##############################
+
+#--------------------------------------------------------------------#
+
 
 
 # NEW RECIPE
-@recipe_routes.route('/new', methods=["POST"])
-@login_required
-def new_recipe():
-  form = RecipeForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
+# @recipe_routes.route('/new', methods=["POST"])
+# @login_required
+# def new_recipe():
+#   form = RecipeForm()
+#   form['csrf_token'].data = request.cookies['csrf_token']
+#   # print('request.files-------------------------------', request.files["recipe_image"])
+
+
+#   if form.validate_on_submit():
+#     recipe = Recipe(
+#       user_id=current_user.id,
+#       title=form.title.data,
+#       ingredients=form.ingredients.data,
+#       preparation=form.preparation.data,
+#       # time=form.time.data,
+#       recipe_image=form.recipe_image.data
+#     )
+
+#     db.session.add(recipe)
+#     db.session.commit()
+#     return recipe.to_dict()
+
+#   return {'errors': validation_errors(form.error), 'statusCode': 401}
 
 
 
 
-  if form.validate_on_submit():
-    recipe = Recipe(
-      user_id=current_user.id,
-      title=form.title.data,
-      ingredients=form.ingredients.data,
-      preparation=form.preparation.data,
-      # time=form.time.data,
-      recipe_image=form.recipe_image.data
-    )
 
-    # if "recipe_image" not in request.files:
-    #   return {"errors": "image required"}, 400
-
-    print('request.files-------------------------------', request.files)
-
-    db.session.add(recipe)
-    db.session.commit()
-    return recipe.to_dict()
-
-  return {'errors': validation_errors(form.error), 'statusCode': 401}
 
 
 

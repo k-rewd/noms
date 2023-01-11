@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useParams, useHistory } from 'react-router-dom'
-import { createRecipeThunk } from '../../store/recipes'
+import { createRecipeThunk, getAllRecipesThunk } from '../../store/recipes'
 import './RecipeForm.css'
 
 
@@ -14,6 +14,11 @@ const RecipeForm = ({ setShowModal }) => {
   const [validationErrors, setValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false);
 
+  // // // // // 
+  // const [image, setImage] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  // // // // // 
+
   const [title, setTitle] = useState('')
   const [ingredients, setIngredients] = useState('')
   const [preparation, setPreparation] = useState('')
@@ -22,7 +27,7 @@ const RecipeForm = ({ setShowModal }) => {
   const newTitle = (e) => setTitle(e.target.value)
   const newIngredients = (e) => setIngredients(e.target.value)
   const newPreparation = (e) => setPreparation(e.target.value)
-  const newRecipeImage = (e) => setRecipeImage(e.target.value)
+
 
   useEffect(() => {
     const errors = []
@@ -42,30 +47,73 @@ const RecipeForm = ({ setShowModal }) => {
     e.preventDefault()
     setShowErrors(true)
 
-    if (!validationErrors.length) {
-      const payload = {
-        title: title,
-        ingredients: ingredients,
-        preparation: preparation,
-        recipe_image: recipeImage
-      }
-      let response = await dispatch(createRecipeThunk(payload))
+    const recipeForm = document.getElementById('recipe-form-id')
+    console.log('recipeForm', recipeForm)
 
-      if (response) {
-        setShowErrors(false)
-        setShowModal(false)
-        history.push(`/recipes/${response.id}`)
-      }
+    // // // // // 
+    const formData = new FormData(recipeForm);
+    formData.append("recipe_image", recipeImage);
+
+    console.log('formdata', formData)
+    setImageLoading(true);
+
+
+    const res = await fetch('/api/recipes/new', {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      await res.json();
+      await dispatch(getAllRecipesThunk());
+      setImageLoading(false);
+      setShowErrors(false)
+      setShowModal(false)
+      console.log('res', res)
+      history.push(`/`)
+    } else {
+      setImageLoading(false);
+      console.log('res', res)
+
+      console.log("error")
     }
+
+    // // // // // 
+
+    // if (!validationErrors.length) {
+    //   const payload = {
+    //     title: title,
+    //     ingredients: ingredients,
+    //     preparation: preparation,
+    //     recipe_image: recipeImage
+    //   }
+    //   let response = await dispatch(createRecipeThunk(payload))
+
+    //   if (response) {
+    //     setShowErrors(false)
+    //     setShowModal(false)
+    //     history.push(`/recipes/${response.id}`)
+    //   }
+    // }
   }
+
+
+
+  const newRecipeImage = (e) => {
+    const file = e.target.files[0];
+    console.log('file', file)
+    setRecipeImage(file)
+  }
+
   return (
     <div className='recipe-form-modal'>
       <div>
-        <form className='recipe-form' onSubmit={handleSubmit}>
+        <form className='recipe-form' id='recipe-form-id' onSubmit={handleSubmit}>
           <div className='form-title-container'><h2 className='form-title'>SHARE YOUR RECIPE</h2></div>
           <div className='recipe-form-content'>
             <input
               className='recipe-form-title'
+              name='title'
               type='text'
               placeholder='Title'
               value={title}
@@ -73,17 +121,23 @@ const RecipeForm = ({ setShowModal }) => {
             <input
               className='recipe-form-image'
               type='file'
+              accept="image/*"
+              name='recipe_image'
               // placeholder='Image URL: png | gif | webp | jpeg | jpg'
-              value={recipeImage}
+              // value={recipeImage}
               onChange={newRecipeImage} />
+              {(imageLoading)}
+              
             <textarea
               className='recipe-form-ingredients'
+              name='ingredients'
               type='text'
               placeholder='Ingredients: Feel free to separate ingredients by line breaks'
               value={ingredients}
               onChange={newIngredients} />
             <textarea
               className='recipe-form-preparation'
+              name='prepartion'
               type='text'
               placeholder='Preparation: Feel free to separate steps by line breaks'
               value={preparation}
@@ -96,6 +150,7 @@ const RecipeForm = ({ setShowModal }) => {
               </ul>
             </div>
             <button className='submit-recipe-button-form' type='submit'>SUBMIT YOUR RECIPE</button>
+            
           </div>
 
         </form>
