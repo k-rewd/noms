@@ -27,27 +27,28 @@ const RecipeForm = ({ setShowModal }) => {
   const newTitle = (e) => setTitle(e.target.value)
   const newIngredients = (e) => setIngredients(e.target.value)
   const newPreparation = (e) => setPreparation(e.target.value)
-
-
-  useEffect(() => {
-    const errors = []
-    if (!title) errors.push('Title is required!')
-    else if (title.length > 25) errors.push('Title too long! (25 characters)')
-    // if (!recipeImage) errors.push('Please provide a valid image of your creation')
-    // else if (recipeImage && !recipeImage.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi)) errors.push('Please enter a valid URL ending with png, gif, webp, jpeg, or jpg')
-    if (!ingredients) errors.push('Ingredients required')
-    else if (ingredients.length > 500) errors.push('Ingredients too long(500 characters)')
-    if (!preparation) errors.push('Preparation field cannot be empty')
-    else if (preparation.length > 500) errors.push('Preparation too long. Consider making a recipe pt2')
-
-    setValidationErrors(errors)
-  }, [title, ingredients, preparation, recipeImage])
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setShowErrors(true)
 
+
+    useEffect(() => {
+      const errors = []
+      if (!title) errors.push('Title is required!')
+      else if (title.length > 25) errors.push('Title too long! (25 characters)')
+      // if (!recipeImage) errors.push('Please provide a valid image of your creation')
+      // else if (recipeImage && !recipeImage.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi)) errors.push('Please enter a valid URL ending with png, gif, webp, jpeg, or jpg')
+      if (!ingredients) errors.push('Ingredients required')
+      else if (ingredients.length > 500) errors.push('Ingredients too long(500 characters)')
+      if (!preparation) errors.push('Preparation field cannot be empty')
+      else if (preparation.length > 500) errors.push('Preparation too long. Consider making a recipe pt2')
+
+      setValidationErrors(errors)
+    }, [title, ingredients, preparation, recipeImage])
+
     const recipeForm = document.getElementById('recipe-form-id')
+
+
     console.log('recipeForm', recipeForm)
 
     // // // // // 
@@ -97,11 +98,9 @@ const RecipeForm = ({ setShowModal }) => {
     // }
   }
 
-
-
   const newRecipeImage = (e) => {
     const file = e.target.files[0];
-    console.log('file', file)
+    // console.log('file', file)
     setRecipeImage(file)
   }
 
@@ -118,16 +117,6 @@ const RecipeForm = ({ setShowModal }) => {
               placeholder='Title'
               value={title}
               onChange={newTitle} />
-            <input
-              className='recipe-form-image'
-              type='file'
-              accept="image/*"
-              name='recipe_image'
-              // placeholder='Image URL: png | gif | webp | jpeg | jpg'
-              // value={recipeImage}
-              onChange={newRecipeImage} />
-              {(imageLoading)}
-              
             <textarea
               className='recipe-form-ingredients'
               name='ingredients'
@@ -137,12 +126,21 @@ const RecipeForm = ({ setShowModal }) => {
               onChange={newIngredients} />
             <textarea
               className='recipe-form-preparation'
-              name='prepartion'
+              name='preparation'
               type='text'
               placeholder='Preparation: Feel free to separate steps by line breaks'
               value={preparation}
               onChange={newPreparation} />
-              <div ></div>
+            <input
+              className='recipe-form-image'
+              type='file'
+              accept="image/*"
+              name='recipe_image'
+              // placeholder='Image URL: png | gif | webp | jpeg | jpg'
+              // value={recipeImage}
+              onChange={newRecipeImage} />
+            {(imageLoading)}
+            <div ></div>
             <div className='recipe-form-error-space'>
               <ul >
                 {showErrors && validationErrors.length > 0 && validationErrors.map(error => (
@@ -150,7 +148,7 @@ const RecipeForm = ({ setShowModal }) => {
               </ul>
             </div>
             <button className='submit-recipe-button-form' type='submit'>SUBMIT YOUR RECIPE</button>
-            
+
           </div>
 
         </form>

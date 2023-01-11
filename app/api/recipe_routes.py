@@ -75,7 +75,7 @@ def upload():
     user_id=current_user.id,
     title=data["title"],
     ingredients=data["ingredients"],
-    preparation=data["prepartion"],
+    preparation=data["preparation"],
     recipe_image=url
     )
 
