@@ -42,7 +42,7 @@ I grace you with, noms, a cocktail recipe site inspired by [Cooking.NYTimes](htt
 <h2>Splash Page</h2>
 <a href="https://nom-s.herokuapp.com/"><img src="https://i.pinimg.com/originals/92/4b/15/924b15df3a76e4e6d0c3fe5634500523.jpg" title="nomssplash">
 
-
+<h2>Recipe Page</h2>
 <a href="https://nom-s.herokuapp.com/recipes/3"><img src=https://i.pinimg.com/originals/85/03/86/85038615c483fc6e06f8bca7ff9a1b6b.jpg title="nomrecipepage" /></a>
 
 
