@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getAllRecipesThunk } from "../../store/recipes";
+// import { Carousel } from 'react-responsive-carousel';
+
 import NavBar from "../Navigation/NavBar";
 
 import SignUpForm from "../auth/SignUpForm";

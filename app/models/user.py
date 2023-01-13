@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     #
     user_recipe = db.relationship('Recipe', back_populates='recipe_user', cascade="all, delete")
     user_note = db.relationship('Note', back_populates='note_user', cascade="all, delete")
+    user_rating = db.relationship('Rating', back_populates='rating_user')
     #
 
     @property

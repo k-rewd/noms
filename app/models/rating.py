@@ -11,8 +11,8 @@ class Rating(db.Model):
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.current_timestamp())
   updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.current_timestamp())
 
-  rating_recipe = db.relationship('Recipe', back_populates='recipe_note')
-  rating_user = db.relationship('User', back_populates='user_note')
+  rating_recipe = db.relationship('Recipe', back_populates='recipe_rating')
+  rating_user = db.relationship('User', back_populates='user_rating')
 
   def to_dict(self):
     return {

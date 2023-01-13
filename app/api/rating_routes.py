@@ -18,7 +18,20 @@ rating_routes = Blueprint('rating', __name__)
 def update_rating(id):
   form = RatingForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  rating = Rating.
+  rating = Rating.query.get(id)
+  if current_user.id != rating.user_id:
+    return {'errors': 'Unauthorized', 'statusCode': 401}
+  if not rating:
+    return {'errors': 'Rating not found', 'statusCode': 404}
+  if form.validate_on_submit():
+    
+    # calculate average here
+
+
+    db.session.commit()
+    return rating.to_dict()
+  return {'errors': validation_errors(form.errors), "statusCode": 401}
+ 
 
 
 
