@@ -116,14 +116,6 @@ def upload():
 
 #   return {'errors': validation_errors(form.error), 'statusCode': 401}
 
-
-
-
-
-
-
-
-
 #UPDATE RECIPE
 @recipe_routes.route('/<int:id>', methods=["PUT"])
 @login_required
@@ -193,4 +185,13 @@ def new_note(id):
     db.session.commit()
     return note.to_dict()
   return {'errors': validation_errors(form.errors), "statusCode": 401}
+
+### RATINGS ###
+# GET ALL RATINGS OF ONE RECIPE
+
+
+
+
+# NEW RATING
+
   
