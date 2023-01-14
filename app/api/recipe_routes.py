@@ -191,7 +191,7 @@ def new_note(id):
   return {'errors': validation_errors(form.errors), "statusCode": 401}
 
 ### RATINGS ###
-# GET ALL RATINGS OF ONE RECIPE
+# GET ALL RATINGS OF ONE RECIPE // add average here?
 @recipe_routes.route('/<int:id>')
 def ratings():
   ratings = Rating.query.all()
