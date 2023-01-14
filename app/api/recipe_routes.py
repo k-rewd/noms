@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, request, jsonify
-from ..models import db, Recipe, Note
-from ..forms import RecipeForm, NoteForm
+from ..models import db, Recipe, Note, Rating
+from ..forms import RecipeForm, NoteForm, RatingForm
 from flask_login import login_required, current_user
 
 # AWS
@@ -28,7 +28,7 @@ def get_all_recipes():
   # return {'recipes': recipe_list}
   return {'recipes': [recipe.to_dict() for recipe in recipes]}
 
-# RECIPE BY ID + ALL ITS NOTES
+# RECIPE BY ID + ALL ITS NOTES + AVG RATING
 @recipe_routes.route('/<int:id>')
 def recipe(id):
   recipe = Recipe.query.get(id)
@@ -36,6 +36,12 @@ def recipe(id):
 
   notes = Note.query.filter(Note.recipe_id == id).all()
   recipe_dictionary['note'] = [notes.to_dict() for notes in notes]
+
+  ratings = Rating.query.filter(Rating.recipe_id == id).all()
+  recipe_dictionary['rating'] = [ratings.to_dict() for ratings in ratings]
+
+  # print('recipe_dict-------------------------------------------->', recipe_dictionary)
+
 
   return recipe_dictionary
 
@@ -49,9 +55,7 @@ def upload():
   if "recipe_image" not in request.files:
     return {"errors": "image required"}, 400
 
-  print('request.files-------------------------------', request.files)
-
-
+  # print('request.files-------------------------------', request.files)
   image = request.files["recipe_image"]
 
   if not allowed_file(image.filename):
@@ -65,8 +69,8 @@ def upload():
     return upload, 400
 
   data = request.form
-  print('dataa------------------------------------', data)
-  print('request------------------------------------', request)
+  # print('dataa------------------------------------', data)
+  # print('request------------------------------------', request)
 
   
   url = upload["url"]
@@ -188,10 +192,28 @@ def new_note(id):
 
 ### RATINGS ###
 # GET ALL RATINGS OF ONE RECIPE
-
-
+@recipe_routes.route('/<int:id>')
+def ratings():
+  ratings = Rating.query.all()
+  return {'ratings': [rating.to_dict() for rating in ratings]}
 
 
 # NEW RATING
+@recipe_routes('/<int:id>/rating', methods=['POST'])
+@login_required
+def new_rating(id):
+  form = RatingForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    rating = Rating(
+      user_id = current_user.id,
+      recipe_id = id,
+      rating = form.rating.data
+    )
+    db.session.add(rating)
+    db.session.commit()
+    return rating.to_dict()
+  return {'errors': validation_errors(form.errors), "statusCode": 401}
+  
 
   

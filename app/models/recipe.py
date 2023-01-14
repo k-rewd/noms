@@ -36,5 +36,5 @@ class Recipe(db.Model):
       # "note": self.recipe_note.to_dict()
       "note": [note.to_dict() for note in self.recipe_note],
       # "rating": [rating.to_dict() for rating in self.recipe_rating]
-      "rating": self.recipe_rating.to_dict()
-      }
+      # "rating": self.recipe_rating.to_dict()
+    }

@@ -26,12 +26,12 @@ def seed_ratings():
     recipe_id=5,
     rating=5
   )
-  rating6 = Rating(
-    user_id=2,
-    recipe_id=1,
-    rating=1
-  )
-  all_ratings = [rating1, rating2, rating3, rating4, rating5, rating6]
+  # rating6 = Rating(
+  #   user_id=2,
+  #   recipe_id=1,
+  #   rating=1
+  # )
+  all_ratings = [rating1, rating2, rating3, rating4, rating5]
   saved_rating = [db.session.add(rating) for rating in all_ratings]
   db.session.commit()
 

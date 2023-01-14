@@ -24,10 +24,7 @@ def update_rating(id):
   if not rating:
     return {'errors': 'Rating not found', 'statusCode': 404}
   if form.validate_on_submit():
-    
-    # calculate average here
-
-
+    rating.rating = form.rating.data
     db.session.commit()
     return rating.to_dict()
   return {'errors': validation_errors(form.errors), "statusCode": 401}
