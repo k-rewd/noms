@@ -23,6 +23,7 @@ const actionUpdateRating = (payload) => {
 
 export const getAllRatingsThunk = (payload) => async dispatch => {
   const response = await fetch(`/api/recipes/${payload}`)
+  // console.log('responseeeeeeeeeeeeee', response)
   if (response.ok) {
     const ratings = await response.json();
     await dispatch(actionGetRatings(ratings))
@@ -50,7 +51,7 @@ export const updateRatingThunk = (payload) => async dispatch => {
   })
   if (response.ok) {
     const updatedRating = await response.json();
-    await dispatch(actionNewRating(updatedRating))
+    await dispatch(actionUpdateRating(updatedRating))
     return updatedRating
   }
   return;
@@ -68,15 +69,15 @@ export const ratingReducer = (state = initialState, action) => {
       })
       return newState
     
-      case NEW_RATING:
-        newState[action.payload.id] = action.payload
-        return newState
+    case NEW_RATING:
+      newState[action.payload.id] = action.payload
+      return newState
       
-      case UPDATE_RATING:
-        newState[action.payload.id] = { ...newState[action.payload.id], ...action.payload }
-        return newState
+    case UPDATE_RATING:
+      newState[action.payload.id] = { ...newState[action.payload.id], ...action.payload }
+      return newState
       
-      default:
-        return state;
+    default:
+      return state;
   }
 }

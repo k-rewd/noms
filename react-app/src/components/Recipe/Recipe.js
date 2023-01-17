@@ -12,6 +12,7 @@ import imgFail from '../buttons/imgfailgif.gif'
 
 import editPNG from '../buttons/edit.png'
 import trashPNG from '../buttons/trash.png'
+import Ratings from "../Ratings/Ratings";
 
 
 const Recipe = () => {
@@ -101,7 +102,8 @@ const Recipe = () => {
               <div id='rp-preparation'>{recipe.preparation}</div>
               <div id='rp-bottom-container'>
                 <div id='rp-bot-left'>
-                  {/* <div>RATINGS</div> */}
+                  <div>RATINGS</div>
+                  <Ratings/>
 
                 </div>
                 <div id='rp-bot-right'>
@@ -109,8 +111,8 @@ const Recipe = () => {
 
 
                   <div>{!existingNote && sessionUser ?
-                    <div id='rp-add-note'> 
-                    <div id='add-note-add-note'>Add Note</div>
+                    <div id='rp-add-note'>
+                      <div id='add-note-add-note'>Add Note</div>
                       <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
 
                     <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :

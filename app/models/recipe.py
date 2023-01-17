@@ -35,6 +35,9 @@ class Recipe(db.Model):
       "user": self.recipe_user.to_dict(),
       # "note": self.recipe_note.to_dict()
       "note": [note.to_dict() for note in self.recipe_note],
-      # "rating": [rating.to_dict() for rating in self.recipe_rating]
+      "rating": [rating.to_dict() for rating in self.recipe_rating]
+      # "rating": float(sum(d['rating'] for d in [rating.to_dict() for rating in self.recipe_rating]))/len(self.recipe_rating)
+
       # "rating": self.recipe_rating.to_dict()
+      
     }

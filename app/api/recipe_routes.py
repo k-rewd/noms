@@ -38,9 +38,18 @@ def recipe(id):
   recipe_dictionary['note'] = [notes.to_dict() for notes in notes]
 
   ratings = Rating.query.filter(Rating.recipe_id == id).all()
+  rating_dict = [ratings.to_dict() for ratings in ratings]
+  avgRating = float(sum(d['rating'] for d in rating_dict)/len(ratings))
+  # print('ratings------------------------', rating_dict)
   recipe_dictionary['rating'] = [ratings.to_dict() for ratings in ratings]
+  recipe_dictionary['avgRating'] = avgRating
+  # length = len(ratings)
 
+  # print('length-------------------------------------------->', avgRating)
+  # print('length-------------------------------------------->', avgRating)
+  # print('avgrating??-------------------------------------------->', avgRating)
   # print('recipe_dict-------------------------------------------->', recipe_dictionary)
+
 
 
   return recipe_dictionary
@@ -199,7 +208,7 @@ def ratings():
 
 
 # NEW RATING
-@recipe_routes('/<int:id>/rating', methods=['POST'])
+@recipe_routes.route('/<int:id>/rating', methods=['POST'])
 @login_required
 def new_rating(id):
   form = RatingForm()
