@@ -13,6 +13,7 @@ import imgFail from '../buttons/imgfailgif.gif'
 import editPNG from '../buttons/edit.png'
 import trashPNG from '../buttons/trash.png'
 import Ratings from "../Ratings/Ratings";
+import RatingForm from "../RatingFrom/RatingForm";
 
 
 const Recipe = () => {
@@ -76,6 +77,7 @@ const Recipe = () => {
               </div>
               <div id='rp-title-author-container'>
                 <div id='rp-recipe-title'>{recipe.title}</div>
+                <div>★{recipe.avgRating}</div>
                 <div id='rp-recipe-author'>By {recipe.user?.username}</div>
               </div>
             </div>
@@ -95,15 +97,16 @@ const Recipe = () => {
               <div className='rp-lab'>I N G R E D I E N T S</div>
               <div id='rp-ingredients'>{recipe.ingredients}</div>
 
+
             </div>
             <div id='rp-content-right'>
-              <div className='rp-lab-prep'>P R E P A R A T I O N</div>
+              <div className='rp-lab-prep'>P R E P A R A T I O N </div>
 
               <div id='rp-preparation'>{recipe.preparation}</div>
               <div id='rp-bottom-container'>
                 <div id='rp-bot-left'>
-                  <div>RATINGS</div>
-                  <Ratings/>
+                  {/* <div>RATINGS</div>
+                  <Ratings/> */}
 
                 </div>
                 <div id='rp-bot-right'>
@@ -129,6 +132,7 @@ const Recipe = () => {
                   <div id='rp-notes-container'>
                     <Notes />
                   </div>
+                  <RatingForm/>
                 </div>
               </div>
             </div>

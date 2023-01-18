@@ -41,36 +41,37 @@ const HomePage = () => {
                   <i className="fa-brands fa-github"></i></a>
                 <a href='https://www.linkedin.com/in/andrew-k-474479123/' target='_blank' rel='noreferrer'>
                   <i class="fa-brands fa-linkedin"></i></a>
+                  
               </div>
             </div>
             <div id='dev-divs-right'>
               <div id='dev-about-site'>
                 <h2 id='about-noms'>ABOUT noms . . .</h2>
                 <div id='dev-about-site-message'>
-                  Welcome to 
+                  Welcome to
                   <span className='bold-this'> noms</span> ...!!
-                  <br/> 
-                  <br/> 
+                  <br />
+                  <br />
                   A place where you can
-                  <br/> 
+                  <br />
                   <div className='bold-this'>
-                  CREATE, READ, UPDATE, DELETE
-                  </div> 
-                  recipes for your favorite 
+                    CREATE, READ, UPDATE, DELETE
+                  </div>
+                  recipes for your favorite
                   drinks
-                  <br/> 
-                  <br/> 
+                  <br />
+                  <br />
                   and also . . . wait for . . .
-                  <br/> 
-                  <br/>
+                  <br />
+                  <br />
                   <div className='bold-this'>
-                  CREATE, READ, UPDATE, DELETE
-                  </div> 
+                    CREATE, READ, UPDATE, DELETE
+                  </div>
                   notes for those recipes!
-                  <br/> 
-                  <br/> 
+                  <br />
+                  <br />
                   <div className='bold-this'>
-                  waaoowww~!!
+                    waaoowww~!!
                   </div>
                 </div>
                 <img id='dev-about-site-circle' src={nomslogoWR} />
@@ -78,8 +79,8 @@ const HomePage = () => {
             </div>
           </div>
           <img id='hp-banner-photo'
-          onError={(e) => e.target.src = splashimg2}
-          src={splashimg}
+            onError={(e) => e.target.src = splashimg2}
+            src={splashimg}
           />
         </div>
         <div id='hp-content'>
@@ -96,6 +97,8 @@ const HomePage = () => {
                     <div id='recipe-card-content'>
                       <div id='recipe-card-title'>{recipe.title}</div>
                       <div id='recipe-card-author'>{recipe.user.username}</div>
+                      <div>★{recipe.avgRating}</div>
+                      
                     </div>
                     <div id='recipe-card-footer-container'>
                       <div id='recipe-card-footer'></div>
