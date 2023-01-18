@@ -32,12 +32,16 @@ export const getAllRatingsThunk = (payload) => async dispatch => {
   return;
 }
 export const newRatingThunk = (payload) =>  async dispatch => {
-  const response = await fetch(`/api/recipes/${payload}/rating`, {
+  const response = await fetch(`/api/recipes/${payload.recipe_id}/rating`, {
     method: "POST",
     headers: { "Content-Type": "application/json"},
     body: JSON.stringify(payload)
   })
+  console.log('responseeeeeeeeeeeeee', response)
+
   if (response.ok) {
+    // console.log('responseeeeeeeeeeeeee', response)
+
     const rating = await response.json();
     await dispatch(actionNewRating(rating))
     return rating
