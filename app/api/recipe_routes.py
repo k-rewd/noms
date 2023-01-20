@@ -1,3 +1,5 @@
+import math
+
 from flask import Blueprint, redirect, request, jsonify
 from ..models import db, Recipe, Note, Rating
 from ..forms import RecipeForm, NoteForm, RatingForm
@@ -42,7 +44,7 @@ def recipe(id):
   avgRating = float(sum(d['rating'] for d in rating_dict)/len(ratings))
   # print('ratings------------------------', rating_dict)
   recipe_dictionary['rating'] = [ratings.to_dict() for ratings in ratings]
-  recipe_dictionary['avgRating'] = avgRating
+  recipe_dictionary['avgRating'] = math.ceil(avgRating)
   # length = len(ratings)
 
   # print('length-------------------------------------------->', avgRating)

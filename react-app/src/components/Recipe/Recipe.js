@@ -109,35 +109,35 @@ const Recipe = () => {
                   <Ratings/> */}
 
                 </div>
-                <div id='rp-bot-right'>
-                  <div className='rp-lab-notes'>N O T E S</div>
 
-
-                  <div>{!existingNote && sessionUser ?
-                    <div id='rp-add-note'>
-                      <div id='add-note-add-note'>Add Note</div>
-                      <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
-
-                    <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
-
-                      <div> {sessionUser ?
-                        <div id='user-note-buttons'>
-                          {/* <div>{existingNote?.note_body}</div> */}
-                          <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
-                          <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
-                        </div> : <div></div>}
-                      </div>}
-                    </div>}
-                  </div>
-                  <div id='rp-notes-container'>
-                    <Notes />
-                  </div>
-                  <RatingForm/>
-                </div>
               </div>
             </div>
           </div>
-          <div id='rp-footer'></div>
+          {/* <div id='rp-bottom'> */}
+            <div id='rp-bot'>
+              <div className='rp-lab-notes'>N O T E S</div>
+
+
+              <div>{!existingNote && sessionUser ?
+                <div id='rp-add-note'>
+                  <div id='add-note-add-note'>Add Note</div>
+                  <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
+
+                <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
+
+                  <div> {sessionUser ?
+                    <div id='user-note-buttons'>
+                      {/* <div>{existingNote?.note_body}</div> */}
+                      <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
+                      <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
+                    </div> : <div></div>}
+                  </div>}
+                </div>}
+              </div>
+              <div id='rp-notes-container'><Notes /></div>
+              <RatingForm />
+            </div>
+          {/* </div> */}
         </div>
 
       </div>

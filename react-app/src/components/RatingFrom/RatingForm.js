@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { newRatingThunk } from '../../store/ratings'
@@ -28,7 +28,7 @@ const RatingForm = () => {
     setRating(e.target.value)
 
     const payload = {
-      user_id : sessionUser.id,
+      user_id: sessionUser.id,
       recipe_id: recipeId,
       rating: e.target.value
     }
@@ -37,12 +37,10 @@ const RatingForm = () => {
     // console.log('payload', payload)
   }
 
-
   return (
     <div>
       {[...Array(5)].map((star, i) => {
         const ratingVal = i + 1;
-
         return (
           <label>
             <input
@@ -57,8 +55,8 @@ const RatingForm = () => {
               onMouseEnter={() => setHover(ratingVal)}
               onMouseLeave={() => setHover(null)}></i>
           </label>
-        )
-      })}
+        )}
+      )}
     </div>
   )
 }
