@@ -5,27 +5,32 @@ import { updateRatingThunk } from '../../store/ratings'
 import '../RatingForm/RatingForm.css'
 
 
-const EditRatingForm = ({ existingRating }) => {
+const EditRatingForm = () => {
   const dispatch = useDispatch()
   const ref = useRef()
   const { recipeId } = useParams()
+  const ratings = useSelector(state => state.ratings);
+  const ratingsArr = Object.values(ratings)
 
+  const sessionUser = useSelector(state => state.session.user);
+
+  let existingRating;
+  if (sessionUser) existingRating = ratingsArr.find(rating => rating.user_id === sessionUser.id)
   console.log('existing rating from edit rating', existingRating)
-
 
   const [rating, setRating] = useState(existingRating?.rating)
   const [hover, setHover] = useState(null);
 
-  const ratings = useSelector(state => state.ratings);
+  
   console.log('ratingsss', ratings)
 
-  const sessionUser = useSelector(state => state.session.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setRating(e.target.value)
 
     const payload = {
+      id: existingRating.id,
       user_id: sessionUser.id,
       recipe_id: recipeId,
       rating: e.target.value
