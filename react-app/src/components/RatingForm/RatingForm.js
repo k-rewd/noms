@@ -28,7 +28,7 @@ const RatingForm = () => {
     setRating(e.target.value)
 
     const payload = {
-      user_id: sessionUser.id,
+      user_id: sessionUser?.id,
       recipe_id: recipeId,
       rating: e.target.value
     }

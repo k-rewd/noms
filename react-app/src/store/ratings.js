@@ -23,7 +23,7 @@ const actionUpdateRating = (payload) => {
 
 export const getAllRatingsThunk = (payload) => async dispatch => {
   const response = await fetch(`/api/recipes/${payload}`)
-  // console.log('responseeeeeeeeeeeeee', response)
+  console.log('response getAllRatings', response)
   if (response.ok) {
     const ratings = await response.json();
     await dispatch(actionGetRatings(ratings))

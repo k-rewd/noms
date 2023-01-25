@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import './RatingForm.css'
+import { updateRatingThunk } from '../../store/ratings'
+import '../RatingForm/RatingForm.css'
 
 
 const EditRatingForm = ({ existingRating }) => {
@@ -9,8 +10,10 @@ const EditRatingForm = ({ existingRating }) => {
   const ref = useRef()
   const { recipeId } = useParams()
 
+  console.log('existing rating from edit rating', existingRating)
 
-  const [rating, setRating] = useState(existingRating.rating)
+
+  const [rating, setRating] = useState(existingRating?.rating)
   const [hover, setHover] = useState(null);
 
   const ratings = useSelector(state => state.ratings);
@@ -30,29 +33,30 @@ const EditRatingForm = ({ existingRating }) => {
     await dispatch(updateRatingThunk(payload))
     console.log('did it work')
 
-    return (
-      <div>
-        {[...Array(5)].map((star, i) => {
-          const ratingVal = i + 1;
-          return (
-            <label>
-              <input
-                type='radio'
-                name='rating'
-                value={ratingVal}
-                onClick={handleSubmit}
-              />
-              <i class="fa-solid fa-star"
-                id={ratingVal <= (hover || rating) ? 'yellow' : 'gray'}
-                onMouseEnter={() => setHover(ratingVal)}
-                onMouseLeave={() => setHover(null)}></i>
-            </label>
-          )
-        })}
-      </div>
-    )
+
 
   }
+  return (
+    <div>
+      {[...Array(5)].map((star, i) => {
+        const ratingVal = i + 1;
+        return (
+          <label>
+            <input
+              type='radio'
+              name='rating'
+              value={ratingVal}
+              onClick={handleSubmit}
+            />
+            <i class="fa-solid fa-star"
+              id={ratingVal <= (hover || rating) ? 'yellow' : 'gray'}
+              onMouseEnter={() => setHover(ratingVal)}
+              onMouseLeave={() => setHover(null)}></i>
+          </label>
+        )
+      })}
+    </div>
+  )
 
 
 }
