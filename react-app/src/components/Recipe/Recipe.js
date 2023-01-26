@@ -39,6 +39,11 @@ const Recipe = () => {
   console.log('ratingsTest', ratingsTest)
   console.log('ratings.rating', ratingsTest?.rating)
 
+  const ratingLength = Object.keys(ratings).length
+
+  console.log('ratings.length',ratingLength)
+
+
   // console.log('notesBEFORE', notes)
   // console.log('recipes', recipe)
 
@@ -64,6 +69,7 @@ const Recipe = () => {
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
   console.log('existingNote', existingNote)
+  
 
   let existingRating;
   if (sessionUser) existingRating = ratingsArr.find(rating => rating.user_id === sessionUser.id)
@@ -79,8 +85,17 @@ const Recipe = () => {
   useEffect(() => {
     dispatch(getOneRecipeThunk(recipeId))
     // dispatch(getAllNotesThunk(recipeId))
-    // dispatch(getAllRatingsThunk(recipeId))
+    dispatch(getAllRatingsThunk(recipeId))
   }, [dispatch, recipeId])
+
+  function starRating(rating) {
+    if (rating === 5) return '★★★★★'
+    else if (4 <= rating && rating <= 4.99) return '★★★★'
+    else if (3 <= rating && rating <= 3.99) return '★★★'
+    else if (2 <= rating && rating <= 2.99) return '★★'
+    else if (1 <= rating && rating <= 1.99) return '★'
+    else return;
+  }
 
   if (!recipe) return null
   else {
@@ -98,7 +113,7 @@ const Recipe = () => {
               </div>
               <div id='rp-title-author-container'>
                 <div id='rp-recipe-title'>{recipe.title}</div>
-                <div>★{recipe.avgRating}</div>
+                <div>{starRating(recipe.avgRating)} ({ratingLength})</div>
                 <div id='rp-recipe-author'>By {recipe.user?.username}</div>
               </div>
             </div>
@@ -127,19 +142,21 @@ const Recipe = () => {
               <div id='rp-bottom-container'>
                 <div id='rp-bot-left'>
 
-                  <Ratings />
+                  {/* <Ratings /> */}
 
                   <div> {sessionUser ?
                     <div>{!existingRating ?
-                      <div id='rp-rating'>
-                        <h2 id='rp-rate-how'>How would you rate 
-                          <div id='rp-rate-title'>{recipe.title}</div>
+                      <div className='rp-rating'>
+                        <h2 className='rp-rate-how'>How would you rate 
+                          <div className='rp-rate-title'>{recipe.title}</div>
                         </h2>
                         <RatingForm />
                       </div>
                       :
-                      <div>Your RATING
-                        <EditRatingForm /></div>}
+                      <div className='rp-rating'>
+                      <h2>Your rating</h2>
+                        <EditRatingForm />
+                        </div>}
                     </div>
                     : <div></div>}
                   </div>

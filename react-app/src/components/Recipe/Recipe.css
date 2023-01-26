@@ -159,14 +159,14 @@
 
 
 }
-#rp-rating {
+.rp-rating {
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
 
-#rp-rate-how {
+.rp-rate-how {
   display: flex;
   gap: 10px;
   /* font-size: 36px;
@@ -175,7 +175,7 @@
 
 }
 
-#rp-rate-title {
+.rp-rate-title {
   text-transform: uppercase;
 }
 

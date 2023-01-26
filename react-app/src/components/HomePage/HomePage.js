@@ -23,9 +23,18 @@ const HomePage = () => {
   // console.log('RECIPES ', recipes)
   // const recipesArr = Object.values(recipes)
   // console.log('recipeArr', recipesArr)
+  function starRating(rating) {
+    if (rating === 5) return '★★★★★'
+    else if (4 <= rating && rating <= 4.99) return '★★★★'
+    else if (3 <= rating && rating <= 3.99) return '★★★'
+    else if (2 <= rating && rating <= 2.99) return '★★'
+    else if (1 <= rating && rating <= 1.99) return '★'
+    else return;
+  }
 
   useEffect(() => {
     dispatch(getAllRecipesThunk())
+    
   }, [dispatch])
 
 
@@ -97,7 +106,7 @@ const HomePage = () => {
                     <div id='recipe-card-content'>
                       <div id='recipe-card-title'>{recipe.title}</div>
                       <div id='recipe-card-author'>{recipe.user.username}</div>
-                      <div>★{recipe.avgRating}</div>
+                      <div>{starRating(recipe.avgRating)}</div>
                       
                     </div>
                     <div id='recipe-card-footer-container'>
