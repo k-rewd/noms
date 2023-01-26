@@ -181,13 +181,19 @@
   height: 40%;
   display: flex;
   flex-direction: column;
-  align-content: space-between;
+  /* justify-content: space-between; */
+
 }
 
 #recipe-card-content {
   /* border: 1px solid turquoise; */
-  margin: 5px 5px 5px 5px;
+  margin: 5px;
   height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
 }
 
 #recipe-card-title {

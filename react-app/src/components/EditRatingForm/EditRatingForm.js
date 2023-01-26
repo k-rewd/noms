@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { updateRatingThunk } from '../../store/ratings'
+import { getAllRecipesThunk } from '../../store/recipes'
 import '../RatingForm/RatingForm.css'
 
 
@@ -36,6 +37,7 @@ const EditRatingForm = () => {
       rating: e.target.value
     }
     await dispatch(updateRatingThunk(payload))
+    await dispatch(getAllRecipesThunk(recipeId))
     console.log('did it work')
 
 
