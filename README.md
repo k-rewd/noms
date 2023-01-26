@@ -7,7 +7,7 @@ I grace you with, noms, a cocktail recipe site inspired by [Cooking.NYTimes](htt
 <br>
 <br>
 
-**Live Site: [Cooking.NYTimes](https://cooking.nytimes.com/)**
+**Live Site: [noms](https://nom-s.herokuapp.com/)**
 <br>
 <br>
 <br>
