@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { newRatingThunk } from '../../store/ratings'
+import { getAllRatingsThunk, newRatingThunk } from '../../store/ratings'
 import './RatingForm.css'
 
 const RatingForm = () => {
@@ -33,6 +33,7 @@ const RatingForm = () => {
       rating: e.target.value
     }
     await dispatch(newRatingThunk(payload))
+    await dispatch(getAllRatingsThunk(recipeId))
     // console.log('did it work')
     // console.log('payload', payload)
   }

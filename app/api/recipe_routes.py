@@ -41,10 +41,10 @@ def recipe(id):
 
   ratings = Rating.query.filter(Rating.recipe_id == id).all()
   rating_dict = [ratings.to_dict() for ratings in ratings]
-  avgRating = round(float(sum(d['rating'] for d in rating_dict)/len(ratings)),2)
+  # avgRating = round(float(sum(d['rating'] for d in rating_dict)/len(ratings)),2)
   # print('ratings------------------------', rating_dict)
   recipe_dictionary['rating'] = [ratings.to_dict() for ratings in ratings]
-  recipe_dictionary['avgRating'] = math.ceil(avgRating)
+  # recipe_dictionary['avgRating'] = math.ceil(avgRating)
   # length = len(ratings)
 
   # print('length-------------------------------------------->', avgRating)

@@ -19,7 +19,10 @@ const HomePage = () => {
   // const [isLoaded, setIsLoaded] = useState(false)
 
   const recipes = useSelector(state => state.recipes)
-  const sessionUser = useSelector(state => state.session.user);
+  const ratings = useSelector(state => state.ratings)
+  const ratingLength = Object.keys(ratings).length
+
+  // const sessionUser = useSelector(state => state.session.user);
   // console.log('RECIPES ', recipes)
   // const recipesArr = Object.values(recipes)
   // console.log('recipeArr', recipesArr)
@@ -104,9 +107,11 @@ const HomePage = () => {
                   </div>
                   <div id='recipe-card-content-container'>
                     <div id='recipe-card-content'>
+                      <div id='recipe-card-title-author'>
                       <div id='recipe-card-title'>{recipe.title}</div>
                       <div id='recipe-card-author'>{recipe.user.username}</div>
-                      <div>{starRating(recipe.avgRating)}</div>
+                      </div>
+                      <div>{starRating(recipe.avgRating)} ({Object.keys(recipe.rating).length})</div>
                       
                     </div>
                     <div id='recipe-card-footer-container'>
