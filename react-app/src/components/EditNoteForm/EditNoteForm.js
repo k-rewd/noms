@@ -7,7 +7,6 @@ import './EditNoteForm.css'
 const EditNoteForm = ({ setShowEdit, existingNote }) => {
   const dispatch = useDispatch()
   const ref = useRef()
-
   const [noteBody, setNoteBody] = useState(existingNote.note_body)
   const [validationErrors, setValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false);
@@ -30,6 +29,7 @@ const EditNoteForm = ({ setShowEdit, existingNote }) => {
       };
     });
   };
+
 
   useEffect(() => {
     const errors = []

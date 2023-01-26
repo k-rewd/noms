@@ -1,0 +1,20 @@
+#gray {
+  color: #e4e5e9;
+  transition: 200ms;
+
+}
+
+#yellow {
+  /* color: #ffc107; */
+  color: black;
+  transition: 200ms;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.fa-star {
+  cursor: pointer;
+  font-size: 50px;
+}

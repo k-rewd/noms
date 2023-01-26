@@ -6,12 +6,17 @@ import Notes from "../Notes/Notes";
 import './Recipe.css'
 import NoteForm from "../NoteForm/NoteForm";
 import EditNoteForm from "../EditNoteForm/EditNoteForm";
-import { deleteNoteThunk } from "../../store/notes";
+import { deleteNoteThunk, getAllNotesThunk } from "../../store/notes";
 import EditRecipeModal from "../EditRecipeForm/EditRecipeModal";
 import imgFail from '../buttons/imgfailgif.gif'
 
 import editPNG from '../buttons/edit.png'
 import trashPNG from '../buttons/trash.png'
+import Ratings from "../Ratings/Ratings";
+import RatingForm from "../RatingForm/RatingForm";
+import EditRatingForm from "../EditRatingForm/EditRatingForm";
+import { getAllRatingsThunk } from "../../store/ratings";
+// import EditRatingForm from "../EditRatingForm/EditRatingForm";
 
 
 const Recipe = () => {
@@ -20,8 +25,20 @@ const Recipe = () => {
   const { recipeId } = useParams()
   const sessionUser = useSelector(state => state.session.user);
   const recipe = useSelector(state => state.recipes[recipeId])
+  const recipeTest = useSelector(state => state.recipes)
+  console.log('recipe', recipe)
+  console.log('recipeTest', recipeTest)
+
   const notes = useSelector(state => state.notes)
   const notesArr = Object.values(notes)
+
+  const ratings = useSelector(state => state.ratings)
+  const ratingsTest = useSelector(state => state.ratings[recipeId])
+  const ratingsArr = Object.values(ratings)
+  console.log('ratingssss', ratings)
+  console.log('ratingsTest', ratingsTest)
+  console.log('ratings.rating', ratingsTest?.rating)
+
   // console.log('notesBEFORE', notes)
   // console.log('recipes', recipe)
 
@@ -46,7 +63,11 @@ const Recipe = () => {
 
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
-  // console.log('existingNote', existingNote)
+  console.log('existingNote', existingNote)
+
+  let existingRating;
+  if (sessionUser) existingRating = ratingsArr.find(rating => rating.user_id === sessionUser.id)
+  console.log('what is this', existingRating?.rating)
 
   const deleteRecipe = async (id) => {
     await dispatch(deleteRecipeThunk(id))
@@ -57,6 +78,8 @@ const Recipe = () => {
 
   useEffect(() => {
     dispatch(getOneRecipeThunk(recipeId))
+    // dispatch(getAllNotesThunk(recipeId))
+    // dispatch(getAllRatingsThunk(recipeId))
   }, [dispatch, recipeId])
 
   if (!recipe) return null
@@ -75,6 +98,7 @@ const Recipe = () => {
               </div>
               <div id='rp-title-author-container'>
                 <div id='rp-recipe-title'>{recipe.title}</div>
+                <div>★{recipe.avgRating}</div>
                 <div id='rp-recipe-author'>By {recipe.user?.username}</div>
               </div>
             </div>
@@ -94,23 +118,46 @@ const Recipe = () => {
               <div className='rp-lab'>I N G R E D I E N T S</div>
               <div id='rp-ingredients'>{recipe.ingredients}</div>
 
+
             </div>
             <div id='rp-content-right'>
-              <div className='rp-lab-prep'>P R E P A R A T I O N</div>
+              <div className='rp-lab-prep'>P R E P A R A T I O N </div>
 
               <div id='rp-preparation'>{recipe.preparation}</div>
               <div id='rp-bottom-container'>
                 <div id='rp-bot-left'>
-                  {/* <div>RATINGS</div> */}
 
-                </div>
-                <div id='rp-bot-right'>
+                  <Ratings />
+
+                  <div> {sessionUser ?
+                    <div>{!existingRating ?
+                      <div id='rp-rating'>
+                        <h2 id='rp-rate-how'>How would you rate 
+                          <div id='rp-rate-title'>{recipe.title}</div>
+                        </h2>
+                        <RatingForm />
+                      </div>
+                      :
+                      <div>Your RATING
+                        <EditRatingForm /></div>}
+                    </div>
+                    : <div></div>}
+                  </div>
+
+                  {/* <div>{sessionUser && existingRating ?
+                    <EditRatingForm existingRating={existingRating} />
+                    :
+                    <RatingForm />
+                  }</div> */}
+
                   <div className='rp-lab-notes'>N O T E S</div>
 
 
+
+
                   <div>{!existingNote && sessionUser ?
-                    <div id='rp-add-note'> 
-                    <div id='add-note-add-note'>Add Note</div>
+                    <div id='rp-add-note'>
+                      <div id='add-note-add-note'>Add Note</div>
                       <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
 
                     <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
@@ -124,14 +171,29 @@ const Recipe = () => {
                       </div>}
                     </div>}
                   </div>
-                  <div id='rp-notes-container'>
-                    <Notes />
-                  </div>
+                  <div id='rp-notes-container'><Notes /></div>
                 </div>
+
               </div>
             </div>
           </div>
-          <div id='rp-footer'></div>
+          {/* <div id='rp-bottom'> */}
+
+
+
+
+
+          <div id='rp-bot'>
+
+
+
+
+
+          </div>
+
+
+
+          {/* </div> */}
         </div>
 
       </div>

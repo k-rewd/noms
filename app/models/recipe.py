@@ -19,6 +19,7 @@ class Recipe(db.Model):
   
   recipe_user = db.relationship('User', back_populates='user_recipe')
   recipe_note = db.relationship('Note', back_populates='note_recipe', cascade="all, delete")
+  recipe_rating = db.relationship('Rating', back_populates='rating_recipe', cascade="all, delete")
 
   def to_dict(self):
     return {
@@ -33,5 +34,10 @@ class Recipe(db.Model):
       "updated_at": self.updated_at,
       "user": self.recipe_user.to_dict(),
       # "note": self.recipe_note.to_dict()
-      "note": [note.to_dict() for note in self.recipe_note]
-      }
+      "note": [note.to_dict() for note in self.recipe_note],
+      "rating": [rating.to_dict() for rating in self.recipe_rating]
+      # "rating": float(sum(d['rating'] for d in [rating.to_dict() for rating in self.recipe_rating]))/len(self.recipe_rating)
+
+      # "rating": self.recipe_rating.to_dict()
+      
+    }
