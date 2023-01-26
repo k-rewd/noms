@@ -124,7 +124,7 @@
 
 #rp-content {
   /* border: 2px solid red; */
-  margin-top: 20px;
+  /* margin-top: 20px; */
   flex: .75;
   display: flex;
   flex-direction: row;
@@ -159,6 +159,25 @@
 
 
 }
+#rp-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+#rp-rate-how {
+  display: flex;
+  gap: 10px;
+  /* font-size: 36px;
+  font-family: 'Roboto', sans-serif;
+  font-weight:600; */
+
+}
+
+#rp-rate-title {
+  text-transform: uppercase;
+}
 
 #rp-add-note {
   font-family: 'Work Sans';
@@ -178,7 +197,7 @@
   background-color: white;
   padding: 20px;
   box-shadow: .5px .5px .5px .5px lightgray;
-  height: 150px;
+  height: 300px;
   overflow-y: auto;
 }
 

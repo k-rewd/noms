@@ -25,7 +25,7 @@ const Recipe = () => {
   const { recipeId } = useParams()
   const sessionUser = useSelector(state => state.session.user);
   const recipe = useSelector(state => state.recipes[recipeId])
-  const recipeTest = useSelector(state=> state.recipes)
+  const recipeTest = useSelector(state => state.recipes)
   console.log('recipe', recipe)
   console.log('recipeTest', recipeTest)
 
@@ -67,7 +67,7 @@ const Recipe = () => {
 
   let existingRating;
   if (sessionUser) existingRating = ratingsArr.find(rating => rating.user_id === sessionUser.id)
-  console.log('what is this',existingRating?.rating)
+  console.log('what is this', existingRating?.rating)
 
   const deleteRecipe = async (id) => {
     await dispatch(deleteRecipeThunk(id))
@@ -126,42 +126,73 @@ const Recipe = () => {
               <div id='rp-preparation'>{recipe.preparation}</div>
               <div id='rp-bottom-container'>
                 <div id='rp-bot-left'>
+
+                  <Ratings />
+
+                  <div> {sessionUser ?
+                    <div>{!existingRating ?
+                      <div id='rp-rating'>
+                        <h2 id='rp-rate-how'>How would you rate 
+                          <div id='rp-rate-title'>{recipe.title}</div>
+                        </h2>
+                        <RatingForm />
+                      </div>
+                      :
+                      <div>Your RATING
+                        <EditRatingForm /></div>}
+                    </div>
+                    : <div></div>}
+                  </div>
+
+                  {/* <div>{sessionUser && existingRating ?
+                    <EditRatingForm existingRating={existingRating} />
+                    :
+                    <RatingForm />
+                  }</div> */}
+
+                  <div className='rp-lab-notes'>N O T E S</div>
+
+
+
+
+                  <div>{!existingNote && sessionUser ?
+                    <div id='rp-add-note'>
+                      <div id='add-note-add-note'>Add Note</div>
+                      <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
+
+                    <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
+
+                      <div> {sessionUser ?
+                        <div id='user-note-buttons'>
+                          {/* <div>{existingNote?.note_body}</div> */}
+                          <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
+                          <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
+                        </div> : <div></div>}
+                      </div>}
+                    </div>}
+                  </div>
+                  <div id='rp-notes-container'><Notes /></div>
                 </div>
 
               </div>
             </div>
           </div>
           {/* <div id='rp-bottom'> */}
+
+
+
+
+
           <div id='rp-bot'>
-            <div className='rp-lab-notes'>N O T E S</div>
 
 
-            <div>{!existingNote && sessionUser ?
-              <div id='rp-add-note'>
-                <div id='add-note-add-note'>Add Note</div>
-                <NoteForm setShowEdit={setShowEdit} recipe={recipe} /></div> :
 
-              <div> {showEdit === existingNote?.id ? <EditNoteForm setShowEdit={setShowEdit} existingNote={existingNote} /> :
 
-                <div> {sessionUser ?
-                  <div id='user-note-buttons'>
-                    {/* <div>{existingNote?.note_body}</div> */}
-                    <img className='editpng' src={editPNG} onClick={() => setShowEdit(existingNote.id)} />
-                    <img className='trashpng' src={trashPNG} onClick={() => { dispatch(deleteNoteThunk(existingNote.id)) }} />
-                  </div> : <div></div>}
-                </div>}
-              </div>}
-            </div>
-            <div id='rp-notes-container'><Notes /></div>
-            <div>RATINGS</div>
-            <Ratings />
-            {/* <EditRatingForm existingRating = {existingRating}/> */}
-            {sessionUser && existingRating ? 
-            <EditRatingForm existingRating = {existingRating}/>
-            : 
-            <RatingForm />
-            }
+
           </div>
+
+
+
           {/* </div> */}
         </div>
 

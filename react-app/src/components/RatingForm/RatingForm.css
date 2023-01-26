@@ -5,7 +5,8 @@
 }
 
 #yellow {
-  color: #ffc107;
+  /* color: #ffc107; */
+  color: black;
   transition: 200ms;
 }
 
@@ -15,4 +16,5 @@ input[type="radio"] {
 
 .fa-star {
   cursor: pointer;
+  font-size: 50px;
 }
