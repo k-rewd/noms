@@ -37,7 +37,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getAllRecipesThunk())
-    
+
   }, [dispatch])
 
 
@@ -53,7 +53,11 @@ const HomePage = () => {
                   <i className="fa-brands fa-github"></i></a>
                 <a href='https://www.linkedin.com/in/andrew-k-474479123/' target='_blank' rel='noreferrer'>
                   <i class="fa-brands fa-linkedin"></i></a>
-                  
+                <a href='https://angel.co/u/andrew-kim-174' target='_blank' rel='noreferrer'>
+                  <i class="fa-brands fa-angellist"></i></a>
+                <a href='https://github.com/k-rewd/noms' target='_blank' rel='noreferrer'>
+                  <i class="fa-brands fa-dev"></i></a>
+
               </div>
             </div>
             <div id='dev-divs-right'>
@@ -64,27 +68,18 @@ const HomePage = () => {
                   <span className='bold-this'> noms</span> ...!!
                   <br />
                   <br />
-                  A place where you can
+                  The newest cocktail recipe site
                   <br />
-                  <div className='bold-this'>
-                    CREATE, READ, UPDATE, DELETE
+                  <div>
+                    where users can learn to make
                   </div>
-                  recipes for your favorite
-                  drinks
+                  their own cocktails, or share
+                  their own.
                   <br />
                   <br />
-                  and also . . . wait for . . .
+                  Nam quis convallis velit. Vestibulum risus magna, semper ac placerat in, suscipit et eros.
                   <br />
                   <br />
-                  <div className='bold-this'>
-                    CREATE, READ, UPDATE, DELETE
-                  </div>
-                  notes for those recipes!
-                  <br />
-                  <br />
-                  <div className='bold-this'>
-                    waaoowww~!!
-                  </div>
                 </div>
                 <img id='dev-about-site-circle' src={nomslogoWR} />
               </div>
@@ -108,11 +103,13 @@ const HomePage = () => {
                   <div id='recipe-card-content-container'>
                     <div id='recipe-card-content'>
                       <div id='recipe-card-title-author'>
-                      <div id='recipe-card-title'>{recipe.title}</div>
-                      <div id='recipe-card-author'>{recipe.user.username}</div>
+                        <div id='recipe-card-title'>{recipe.title}</div>
+                        <div id='recipe-card-author'>{recipe.user.username}</div>
                       </div>
-                      <div>{starRating(recipe.avgRating)} ({Object.keys(recipe.rating).length})</div>
-                      
+                      <div>{Object.keys(recipe.rating).length ?
+                        <div>{starRating(recipe.avgRating)} ({Object.keys(recipe.rating).length})</div>
+                        : <div>NEW!</div>
+                      }</div>
                     </div>
                     <div id='recipe-card-footer-container'>
                       <div id='recipe-card-footer'></div>

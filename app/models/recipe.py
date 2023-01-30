@@ -36,8 +36,7 @@ class Recipe(db.Model):
       # "note": self.recipe_note.to_dict()
       "note": [note.to_dict() for note in self.recipe_note],
       "rating": [rating.to_dict() for rating in self.recipe_rating],
-      "avgRating": round(float(sum(d['rating'] for d in [rating.to_dict() for rating in self.recipe_rating]))/len(self.recipe_rating), 2)
-
+      "avgRating": round(float(sum(d['rating'] for d in [rating.to_dict() for rating in self.recipe_rating]))/len(self.recipe_rating), 2) if len(self.recipe_rating) > 0 else 0
       # "rating": self.recipe_rating.to_dict()
       
     }

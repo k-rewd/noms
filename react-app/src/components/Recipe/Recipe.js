@@ -41,7 +41,7 @@ const Recipe = () => {
 
   const ratingLength = Object.keys(ratings).length
 
-  console.log('ratings.length',ratingLength)
+  console.log('ratings.length', ratingLength)
 
 
   // console.log('notesBEFORE', notes)
@@ -69,7 +69,7 @@ const Recipe = () => {
   let existingNote;
   if (sessionUser) existingNote = notesArr.find(note => note.user_id === sessionUser.id)
   console.log('existingNote', existingNote)
-  
+
 
   let existingRating;
   if (sessionUser) existingRating = ratingsArr.find(rating => rating.user_id === sessionUser.id)
@@ -113,7 +113,10 @@ const Recipe = () => {
               </div>
               <div id='rp-title-author-container'>
                 <div id='rp-recipe-title'>{recipe.title}</div>
-                <div>{starRating(recipe.avgRating)} ({ratingLength})</div>
+                <div> {ratingLength ?
+                  <div>{starRating(recipe.avgRating)} ({ratingLength})</div>
+                  : <div></div>
+                }</div>
                 <div id='rp-recipe-author'>By {recipe.user?.username}</div>
               </div>
             </div>
@@ -147,16 +150,16 @@ const Recipe = () => {
                   <div> {sessionUser ?
                     <div>{!existingRating ?
                       <div className='rp-rating'>
-                        <h2 className='rp-rate-how'>How would you rate 
+                        <h2 className='rp-rate-how'>How would you rate
                           <div className='rp-rate-title'>{recipe.title}</div>
                         </h2>
                         <RatingForm />
                       </div>
                       :
                       <div className='rp-rating'>
-                      <h2>Your rating</h2>
+                        <h2>Your rating</h2>
                         <EditRatingForm />
-                        </div>}
+                      </div>}
                     </div>
                     : <div></div>}
                   </div>
